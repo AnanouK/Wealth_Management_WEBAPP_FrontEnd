@@ -1,0 +1,51 @@
+.listcontainer{
+display : flex;
+flex : 1;
+flex-direction : column;
+margin-top : 100px;
+color : white;
+}
+
+.items {
+text-align : center;
+color : white;
+}
+.table{
+margin : 20px;
+font-size: 18px;
+font-weight: 600;
+}
+
+.title{
+text-align : center;
+}
+
+.test2 {
+background-color : white;
+}
+
+.test1{
+    text-align: center;
+}
+
+.items1
+{
+    width: 150px;
+    color: white;
+    text-align: center;
+}
+
+.pourcentagebenef{
+   font-size: 14px;
+   
+}
+
+.up {
+    color: green;
+    font-size: 14px;
+}
+
+.down{
+    color: red;
+    font-size: 14px;
+}
