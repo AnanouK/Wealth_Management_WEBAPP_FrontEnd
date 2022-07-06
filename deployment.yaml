@@ -26,6 +26,7 @@ kind: Service
 metadata:
   name: frontend-service
 spec:
+type : LoadBalancer
   ports:
     - port: 80
       targetPort: 80
