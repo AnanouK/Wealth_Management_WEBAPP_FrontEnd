@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const INVESTMENT_ALL = "/investments/alldata";
+const INVESTMENT_ALL = "investment-service:9001/investments/alldata";
 
 class getdata {
 
