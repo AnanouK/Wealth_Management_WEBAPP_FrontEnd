@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const INVESTMENT_BASE_API_URL = "http://investment-service-svc.default.svc.cluster.local/investments/allinvestments";
-const INVESTMENT_ADD = "http://investment-service-svc.default.svc.cluster.local/investments/addinvestment";
+const INVESTMENT_BASE_API_URL = "/investments/allinvestments";
+const INVESTMENT_ADD = "/investments/addinvestment";
 
 class InvestmentService {
 
