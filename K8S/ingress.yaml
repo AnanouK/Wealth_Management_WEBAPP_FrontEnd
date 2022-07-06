@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: ingress-service
 spec:
-  type: LoadBalanced
+  type: LoadBalancer
   rules:
     - http:
         paths:
