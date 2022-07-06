@@ -29,6 +29,6 @@ RUN rm -rf ./*
 # Copies static resources from builder stage
 COPY --from=builder /app/build .
 
-EXPOSE 8080
+EXPOSE 80
 # Containers run nginx with global directives and daemon off
 CMD ["nginx", "-g", "daemon off;"]
