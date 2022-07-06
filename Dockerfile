@@ -28,5 +28,7 @@ WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
 # Copies static resources from builder stage
 COPY --from=builder /app/build .
+
+EXPOSE 8080
 # Containers run nginx with global directives and daemon off
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
