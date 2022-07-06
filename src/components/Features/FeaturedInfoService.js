@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const INVESTMENT_ALL = "http://investment-service.default.svc.cluster.local/investments/alldata";
+const INVESTMENT_ALL = "http://investment-service-svc.default.svc.cluster.local/investments/alldata";
 
 class getdata {
 
