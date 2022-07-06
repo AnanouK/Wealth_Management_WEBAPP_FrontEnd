@@ -24,13 +24,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service-loadbalancer
+  name: frontend-service
 spec:
-  type: LoadBalancer
   ports:
     - port: 80
       targetPort: 80
       protocol: TCP
-      nodePort: 31000
   selector:
     app: frontend
