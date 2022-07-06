@@ -1,34 +1,28 @@
-# pull official base image
-FROM node:alpine AS builder
+FROM node as builder
 
-# set working directory
+# make the 'app' folder the current working directory
 WORKDIR /app
 
+# copy both 'package.json' and 'package-lock.json' (if available)
+COPY package*.json ./
 
-# install app dependencies
-#copies package.json and package-lock.json to Docker environment
-COPY package.json ./
+# install project dependencies
+RUN npm install
 
-# Installs all node packages
-RUN npm install 
+# copy project files and folders to the current working directory (i.e. 'app' folder)
+COPY . .
 
-
-# Copies everything over to Docker environment
-COPY . ./
+# build app
 RUN npm run build
 
-#Stage 2
-#######################################
-#pull the official nginx:1.19.0 base image
-FROM nginx
-#copies React to the container directory
-# Set working directory to nginx resources directory
-WORKDIR /usr/share/nginx/html
-# Remove default nginx static resources
-RUN rm -rf ./*
-# Copies static resources from builder stage
-COPY --from=builder /app/build .
+FROM nginx:alpine
+COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
+
+## Remove default nginx index pagec
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy from the stage 1
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 80
-# Containers run nginx with global directives and daemon off
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
