@@ -1,27 +1,17 @@
-FROM node:14 as builder
+FROM node as builder
 
 # make the 'app' folder the current working directory
 WORKDIR /app
-
-# copy both 'package.json' and 'package-lock.json' (if available)
-COPY package*.json ./
-
-# install project dependencies
+COPY package*.json /app/
 RUN npm install
-
-# copy project files and folders to the current working directory (i.e. 'app' folder)
-COPY . .
-
-# build app
+COPY ./ /app/
 RUN npm run build
 
 FROM nginx:alpine
 
-## Remove default nginx index pagec
-RUN rm -rf /usr/share/nginx/html/*
 
 # Copy from the stage 1
-COPY --from=builder /app/build .
+COPY --from=builder /app/build/ /usr/share/nginx/html
 
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

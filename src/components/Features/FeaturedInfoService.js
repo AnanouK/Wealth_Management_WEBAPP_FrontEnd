@@ -2,6 +2,7 @@ import axios from "axios";
 
 
 const INVESTMENT_ALL = "http://34.160.0.103/investments/alldata";
+const test = 0;
 
 class getdata {
 
