@@ -21,4 +21,4 @@ spec:
           service:
             name: investment-service
             port:
-              number: 9001
+              number: 80
