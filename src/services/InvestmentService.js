@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const INVESTMENT_BASE_API_URL = "http://34.160.0.103.500/investments/allinvestments";
-const INVESTMENT_ADD = "http://34.160.0.103.500/investments/addinvestment";
+const INVESTMENT_BASE_API_URL = "http://34.160.0.103/investments/allinvestments";
+const INVESTMENT_ADD = "http://34.160.0.103/investments/addinvestment";
 
 class InvestmentService {
 
