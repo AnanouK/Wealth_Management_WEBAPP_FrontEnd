@@ -16,7 +16,6 @@ COPY . .
 RUN npm run build
 
 FROM nginx:alpine
-COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
 
 ## Remove default nginx index pagec
 RUN rm -rf /usr/share/nginx/html/*

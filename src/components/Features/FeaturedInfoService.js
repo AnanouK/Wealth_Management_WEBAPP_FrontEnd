@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const INVESTMENT_ALL = "investment-service:9001/investments/alldata";
+
+const INVESTMENT_ALL = "http://34.160.0.103/investments/alldata";
 
 class getdata {
 

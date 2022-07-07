@@ -2,9 +2,20 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: basic-ingress
+  annotations:
+    kubernetes.io/ingress.class: gce
 spec:
-  defaultBackend:
-    service:
-      name: frontend-service
-      port:
-        number: 80
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: frontend-service
+          servicePort: 80
+      - path: /investments/*
+        backend:
+          serviceName: investment-service
+          servicePort: 9001
+
+      
+  
