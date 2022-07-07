@@ -8,13 +8,3 @@ spec:
       name: frontend-service
       port:
         number: 80
-  rules:
-  - http:
-     paths:
-    - path: /investment-service/*
-      pathType: ImplementationSpecific
-      backend:
-        service:
-          name: Investment-service
-          port:
-            number: 9001
