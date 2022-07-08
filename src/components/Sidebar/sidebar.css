@@ -32,15 +32,26 @@
   display: flex;
   align-items: center;
   border-radius: 10px;
-  color : white;
+  color: #6c7293;
+  text-decoration: none;
 }
 
 .sidebarListItem.active,
 .sidebarListItem:hover {
   background-color: grey;
+  color: white;
 }
 
 .sidebarIcon{
     margin-right: 5px;
     font-size: 20px !important;
+}
+
+.sidetext{
+  color: white;
+  text-decoration: none;
+}
+
+.sidetext:hover{
+  color: white;
 }

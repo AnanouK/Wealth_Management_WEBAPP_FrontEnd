@@ -1,4 +1,5 @@
 import "./sidebar.css";
+import { Link } from 'react-router-dom'
 import {
   LineStyle,
   Timeline,
@@ -13,8 +14,6 @@ import {
   WorkOutline,
   Report,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-//import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -24,19 +23,19 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Tableau de bord</h3>
           <ul className="sidebarList">
 
-            <li className="sidebarListItem active ">
+            <li className="sidebarListItem">
               <LineStyle className="sidebarIcon" />
-              Accueil
+              <Link to="/" className="sidetext">Accueil</Link> 
 
             </li>
 
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
-              Investissements
+              <Link to="/investments" className="sidetext">Investissements</Link> 
             </li>
             <li className="sidebarListItem">
               <TrendingUp className="sidebarIcon" />
-              Simulateur
+              <Link to="/simulateur" className="sidetext">Simulateur(soon)</Link> 
             </li>
           </ul>
         </div>

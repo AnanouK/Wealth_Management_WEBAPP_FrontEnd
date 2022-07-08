@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import InvestmentService from '../services/InvestmentService'
 import "./ListInvestmentComponent.css"
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
+import axios from 'axios';
 
 
 const ListInvestmentComponent = () => {
@@ -64,9 +65,12 @@ const ListInvestmentComponent = () => {
                             <td className="cellule"> {investment.benefice} €
                                 {arrow1(investment)}
                             </td>
-                            <td>
+                            <td className="celluleboutons">
                                 <Link className='btn btn-info' to={'/update/'+ investment.id}> Modifier</Link>
-                                <button className='btn btn-danger' style = {{marginLeft : "10px"}}> X</button>
+                                <button className='btn btn-primary' style = {{marginLeft : "10px"}} onClick={(e) => axios.get("http://34.160.0.103/statistics/getstatisticsof/",investment.name,"venenium")}> Statistiques</button>
+                                <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={(e) => axios.delete("http://34.160.0.103/investments/delete/"+investment.id)}> X</button>
+                                
+
                             </td>
                         </tr>
                     )

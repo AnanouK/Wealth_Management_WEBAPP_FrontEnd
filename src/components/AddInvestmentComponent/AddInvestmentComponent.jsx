@@ -53,6 +53,7 @@ export const AddInvestmentComponent = () => {
                             <Button variant="contained" endIcon={<SendIcon />} style={{marginRight : "10px"}} onClick={(e) => saveInvestment(e) }> Confirmer </Button> 
                             <Button  variant="contained" color="error" startIcon={<DeleteIcon />}> <Link to="/investments" className="linkbutton">Annuler</Link> </Button>
                         </form>
+
                     </div>
                 </div>
             </div>
