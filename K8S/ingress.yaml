@@ -22,3 +22,10 @@ spec:
             name: investment-service
             port:
               number: 80
+      - path: /statistics/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: statistics-service
+            port:
+              number: 80
