@@ -16,10 +16,11 @@ function App() {
         <Sidebar/>
         <div className="container">
           <Routes>
-              <Route path='/' element = { <><FeaturedInfo/><Charts/><ListInvestmentComponent/></>} ></Route>
+              <Route path='/' element = { <><FeaturedInfo/><ListInvestmentComponent/></>} ></Route>
               <Route path='/investments'  element = { <ListInvestmentComponent/>}  ></Route>
               <Route path='/addinvestment'  element = { <AddInvestmentComponent/>}  ></Route>
               <Route path='/update/:id'  element = { <AddInvestmentComponent/>}  ></Route>
+              <Route path='/statistics/:name'  element = { <Charts/>}  ></Route>
           </Routes>
          </div>
       </div>

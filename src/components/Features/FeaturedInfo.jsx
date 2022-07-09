@@ -11,11 +11,15 @@ const FeaturedInfo = () => {
 
     useEffect(() => {
 
-        getdata.getall().then((Response) =>{
-            setalldata(Response.data);
-        })
+      getthedata();
+
     }, [])
 
+    const getthedata = () => {
+      getdata.getall().then((Response) =>{
+        setalldata(Response.data);
+    })
+    }
     const arrow1 = () => {
 
       if ( alldata.actual >= alldata.base)

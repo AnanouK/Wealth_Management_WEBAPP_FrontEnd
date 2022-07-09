@@ -1,10 +1,11 @@
-
 import React , {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import InvestmentService from '../services/InvestmentService'
 import "./ListInvestmentComponent.css"
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
+import FeaturedInfo from "./Features/FeaturedInfo"
 import axios from 'axios';
+
 
 
 const ListInvestmentComponent = () => {
@@ -13,12 +14,19 @@ const ListInvestmentComponent = () => {
 
     useEffect(() => {
       
-        InvestmentService.getAllInvestments().then((Response) =>{
-            setinvestments(Response.data);
-            
-        })
+        getAllInvestments();
     }, [])
     
+    const INGRESS_API = "34.160.0.103";
+    const INVESTMENT_BASE_API_URL = "http://" + INGRESS_API + "/investments/allinvestments";
+
+    const getAllInvestments = () => {
+        return axios.get(INVESTMENT_BASE_API_URL).then(res => {
+            setinvestments(res.data);
+        })
+
+    }
+
     const arrow1 = (e) => {
 
         if ( e.actual >= e.capital)
@@ -37,6 +45,16 @@ const ListInvestmentComponent = () => {
 
         }
 
+    const navigate = useNavigate();
+
+    const deleteinvest = (id) => {
+
+        if(window.confirm("Etes-vous sur de vouloir supprimer cet investissement ?")){
+            axios.delete("http://34.160.0.103/investments/delete/"+id);
+            setTimeout(() => getAllInvestments(), 500); 
+
+        }
+    }
 
 
   return (
@@ -67,8 +85,8 @@ const ListInvestmentComponent = () => {
                             </td>
                             <td className="celluleboutons">
                                 <Link className='btn btn-info' to={'/update/'+ investment.id}> Modifier</Link>
-                                <button className='btn btn-primary' style = {{marginLeft : "10px"}} onClick={(e) => axios.get("http://34.160.0.103/statistics/getstatisticsof/",investment.name,"venenium")}> Statistiques</button>
-                                <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={(e) => axios.delete("http://34.160.0.103/investments/delete/"+investment.id)}> X</button>
+                                <Link to={"/statistics/"+investment.name}> <button className='btn btn-primary' style = {{marginLeft : "10px"}}> Statistiques</button></Link>
+                                <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={() => deleteinvest(investment.id)}> X</button>
                                 
 
                             </td>
@@ -87,3 +105,4 @@ const ListInvestmentComponent = () => {
 }
 
 export default ListInvestmentComponent
+

@@ -1,30 +1,14 @@
+import { useParams } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import "./Charts.css";
+import ChartsService from "./ChartsService";
+
+export const Charts = () => {
+
+  const {name} = useParams();
 
 const data = [
-    {
-      name: 'January',
-      Iphone: 4000
-    },
-    {
-      name: "March",
-      Iphone: 1000,
-    },
-    {
-      name: "May",
-      Iphone: 4000,
-    },
-    {
-      name: "July",
-      Iphone: 800,
-    },
-    {
-      name: "October",
-      Iphone: 1500,
-    },
   ];
-
-function Charts(){
 
     return (
         <div className='container'>
