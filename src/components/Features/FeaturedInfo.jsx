@@ -46,7 +46,7 @@ const FeaturedInfo = () => {
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">{alldata.actual} €</span>
         </div>
-        <span className="featuredSub">Comparé à la hier</span>
+        <span className="featuredSub">De tous les investissements</span>
       </div>
       <div className="featuredItem">
         <span className="featuredTitle">Bénéfice total</span>

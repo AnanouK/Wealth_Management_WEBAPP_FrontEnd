@@ -22,6 +22,7 @@ class InvestmentService {
     updateInvestment(investment,id)
     {
         axios.put(INVESTMENT_UPDATE + id, investment);
+        axios.post(INVESTMENT_ADD_STATISTICS_SERVICE, investment);
     }
 
     getInvestmentById(investmentId)

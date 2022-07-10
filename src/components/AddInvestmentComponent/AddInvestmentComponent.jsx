@@ -67,6 +67,24 @@ export const AddInvestmentComponent = () => {
         else return "Ajouter";
     }
 
+    const titlechange = () => {
+        if(id)
+        {
+            return "Modifier un investissement";
+        }
+
+        else return "Ajouter un investissement";
+    }
+
+    const datechange = () => {
+        if(id)
+        {
+            return "Date de la modification (Date du jour)";
+        }
+
+        else return "Date de départ";
+    }
+
   return (
     <div>
         <br />
@@ -74,7 +92,7 @@ export const AddInvestmentComponent = () => {
             <div className="row">
                 <div className="card col-md-6 offset-md-3 offset-md-3">
                     <br />
-                    <h2 className="text-center"> Ajouter un investissement </h2>
+                    <h2 className="text-center"> {titlechange()} </h2>
                     <div className="card-body">
                         <form action="">
                             <div className="form-group mb-2">
@@ -82,7 +100,7 @@ export const AddInvestmentComponent = () => {
                                 <input type="text" placeholder="Bourse" name="name" className="form-control" value={name} onChange = {(e) => setname(e.target.value)} />
                             </div>
                             <div className="form-group mb-2">
-                                <label className="form-label"> Date de départ : </label>
+                                <label className="form-label"> {datechange()} : </label>
                                 <input type="date" placeholder="07/08/2021" name="start" className="form-control" value={start} onChange = {(e) => setstart(e.target.value)} />
                             </div>
                             <div className="form-group mb-2">

@@ -8,7 +8,7 @@ class ChartsService {
 
     getstatisticsof(name,username)
     {
-        axios.get(STATISTICSDATA + name +"/" + username)
+       return 
     }
 
 }

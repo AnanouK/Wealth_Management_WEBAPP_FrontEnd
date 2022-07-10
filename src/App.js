@@ -1,5 +1,5 @@
 import './App.css';
-import ListInvestmentComponent from './components/ListInvestmentComponent';
+import ListInvestmentComponent from './components/ListInvestmentsComponents/ListInvestmentComponent';
 import HeaderComponent from './components/Header/HeaderComponent';
 import Sidebar from './components/Sidebar/sidebar';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";

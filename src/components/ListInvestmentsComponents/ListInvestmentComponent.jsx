@@ -1,9 +1,7 @@
 import React , {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import InvestmentService from '../services/InvestmentService'
 import "./ListInvestmentComponent.css"
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
-import FeaturedInfo from "./Features/FeaturedInfo"
 import axios from 'axios';
 
 
@@ -47,10 +45,12 @@ const ListInvestmentComponent = () => {
 
     const navigate = useNavigate();
 
-    const deleteinvest = (id) => {
+    const deleteinvest = (id,name) => {
 
         if(window.confirm("Etes-vous sur de vouloir supprimer cet investissement ?")){
             axios.delete("http://34.160.0.103/investments/delete/"+id);
+            axios.delete("http://34.160.0.103/statistics/delete/"+name);
+
             setTimeout(() => getAllInvestments(), 500); 
 
         }
@@ -63,7 +63,7 @@ const ListInvestmentComponent = () => {
         <table className='table table-bordered table-striped'>
             <thead>
                 <th className="items"> Id</th>
-                <th className="items"> Name</th>
+                <th className="items"> Nom</th>
                 <th className="items"> Date de départ</th>
                 <th className="items"> Capital de départ</th>
                 <th className="items"> Capital Actuel</th>
@@ -86,7 +86,7 @@ const ListInvestmentComponent = () => {
                             <td className="celluleboutons">
                                 <Link className='btn btn-info' to={'/update/'+ investment.id}> Modifier</Link>
                                 <Link to={"/statistics/"+investment.name}> <button className='btn btn-primary' style = {{marginLeft : "10px"}}> Statistiques</button></Link>
-                                <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={() => deleteinvest(investment.id)}> X</button>
+                                <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={() => deleteinvest(investment.id, investment.name)}> X</button>
                                 
 
                             </td>
