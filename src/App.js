@@ -6,26 +6,27 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FeaturedInfo from './components/Features/FeaturedInfo';
 import { AddInvestmentComponent } from './components/AddInvestmentComponent/AddInvestmentComponent';
 import Charts from './components/Charts/Charts';
+import Login from "./components/Login/Login"
+
 
 function App() {
   return (
-
+  <div className='App'>
     <Router>
-      <HeaderComponent/>
-      <div className="test">
+        <HeaderComponent/>
         <Sidebar/>
         <div className="container">
           <Routes>
-              <Route path='/' element = { <><FeaturedInfo/><ListInvestmentComponent/></>} ></Route>
-              <Route path='/investments'  element = { <ListInvestmentComponent/>}  ></Route>
-              <Route path='/addinvestment'  element = { <AddInvestmentComponent/>}  ></Route>
-              <Route path='/update/:id'  element = { <AddInvestmentComponent/>}  ></Route>
-              <Route path='/statistics/:name'  element = { <Charts/>}  ></Route>
+              <Route path='/:username' element = { <><FeaturedInfo/><ListInvestmentComponent/></>} ></Route>
+              <Route path='/' element ={<Login/>}></Route>
+              <Route path='/investments/:username'  element = { <ListInvestmentComponent/>}></Route>
+              <Route path='/addinvestment/:username'  element = { <AddInvestmentComponent/>}></Route>
+              <Route path='/update/:id:username'  element = { <AddInvestmentComponent/>}></Route>
+              <Route path='/statistics/:username'  element = { <Charts/>}></Route>
           </Routes>
          </div>
-      </div>
-
     </Router>
+    </div>
       
     
   );

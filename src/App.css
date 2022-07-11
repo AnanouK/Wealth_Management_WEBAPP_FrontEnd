@@ -1,5 +1,5 @@
-.test{
+.App{
     display: flex;
-    padding-left: 5;
-    background-color : black;
+    flex-wrap: wrap;
+    background-color: black;
 }

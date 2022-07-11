@@ -1,5 +1,5 @@
 import React , {useState, useEffect} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import "./ListInvestmentComponent.css"
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import axios from 'axios';
@@ -8,15 +8,23 @@ import axios from 'axios';
 
 const ListInvestmentComponent = () => {
 
+    const {username} = useParams();
+
     const [investments, setinvestments] = useState([])
 
     useEffect(() => {
-      
+        if (!username){
+            navigate("/login");
+          }
+          else{
+
+          
         getAllInvestments();
+    }
     }, [])
     
     const INGRESS_API = "34.160.0.103";
-    const INVESTMENT_BASE_API_URL = "http://" + INGRESS_API + "/investments/allinvestments";
+    const INVESTMENT_BASE_API_URL = "http://" + INGRESS_API + "/investments/allinvestments/" +username;
 
     const getAllInvestments = () => {
         return axios.get(INVESTMENT_BASE_API_URL).then(res => {
@@ -85,7 +93,7 @@ const ListInvestmentComponent = () => {
                             </td>
                             <td className="celluleboutons">
                                 <Link className='btn btn-info' to={'/update/'+ investment.id}> Modifier</Link>
-                                <Link to={"/statistics/"+investment.name}> <button className='btn btn-primary' style = {{marginLeft : "10px"}}> Statistiques</button></Link>
+                                <Link to={"/statistics/"+investment.name+"/"+ username}> <button className='btn btn-primary' style = {{marginLeft : "10px"}}> Statistiques</button></Link>
                                 <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={() => deleteinvest(investment.id, investment.name)}> X</button>
                                 
 
@@ -96,7 +104,7 @@ const ListInvestmentComponent = () => {
             </tbody>
             
         </table>
-        <Link to= "/addinvestment" style={{width : "100%"}} className="btn btn-primary mb-2" > Ajouter</Link>
+        <Link to= {"/addinvestment/" + username} style={{width : "100%"}} className="btn btn-primary mb-2" > Ajouter</Link>
         
     
     

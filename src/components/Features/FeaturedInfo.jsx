@@ -2,16 +2,26 @@ import "./FeaturedInfo.css";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import getdata from './FeaturedInfoService';
 import React , {useState, useEffect} from 'react'
-import AssessmentIcon from '@mui/icons-material/Assessment';
-import { Icon } from "@mui/material";
+import axios from "axios";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
+
+
 
 const FeaturedInfo = () => {
 
+    const navigate = useNavigate();
+    const {username} = useParams();
+
+    const INVESTMENT_ALL = "http://34.160.0.103/investments/alldata/" + username;
     const [alldata, setalldata] = useState([])
 
     useEffect(() => {
-
-      getthedata();
+      if (!username){
+        navigate("/login");
+      }
+      else{
+       axios.get(INVESTMENT_ALL);
+      }
 
     }, [])
 
@@ -32,6 +42,7 @@ const FeaturedInfo = () => {
 
 
   return (
+
     <div className="featured">
       <div className="featuredItem">
         <span className="featuredTitle">Capital de base</span>

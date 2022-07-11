@@ -12,6 +12,7 @@ import axios from "axios";
 
 export const AddInvestmentComponent = () => {
 
+    const {username} = useParams();
     const [name, setname] = useState("")
     const [start, setstart] = useState("")
     const [capital, setcapital] = useState(0)
@@ -25,16 +26,16 @@ export const AddInvestmentComponent = () => {
         
         if(!id){
 
-            const investment = {name,start,capital,actual}
+            const investment = {name,start,capital,actual,username}
             InvestmentService.saveInvestment(investment);  
-            setTimeout(() => navigate("/"), 500);    
+            setTimeout(() => navigate("/" + username), 500);    
         }
 
         else {
 
             const newinvestment = {name,start,capital,actual};
             InvestmentService.updateInvestment(newinvestment,id);
-            setTimeout(() => navigate("/"), 500); 
+            setTimeout(() => navigate("/"+ username), 500); 
         }
 
 

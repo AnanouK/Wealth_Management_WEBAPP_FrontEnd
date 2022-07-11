@@ -10,6 +10,7 @@ export const Charts = () => {
   const {name} = useParams();
   const [data, setdata] = useState([]);
 
+  const {username} = useParams();
   const INGRESS_API = "34.160.0.103";
   const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof/";
   
@@ -21,7 +22,7 @@ export const Charts = () => {
   }, [])
 
   const getdata = () =>{
-    axios.get(STATISTICSDATA + name +"/" + "venenium").then(res =>{
+    axios.get(STATISTICSDATA + name +"/" + username).then(res =>{
       setdata(res.data);
     })}
 
@@ -35,7 +36,7 @@ export const Charts = () => {
         <LineChart
           width={500}
           height={300}
-          data={test}
+          data={[test]}
           margin={{
             top: 15,
             right: 30,
