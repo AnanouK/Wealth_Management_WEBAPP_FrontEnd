@@ -8,6 +8,7 @@ import { AddInvestmentComponent } from './components/AddInvestmentComponent/AddI
 import Charts from './components/Charts/Charts';
 import Login from "./components/Login/Login"
 import { UserContextProvider } from './utils/UserContext';
+import { Donut } from './components/Donut/Donut';
 
 
 
@@ -22,7 +23,7 @@ function App() {
         <HeaderComponent/>
         <div className="container">
           <Routes>
-              <Route path='/dashboard' element = { <><FeaturedInfo/><ListInvestmentComponent/></>} ></Route>
+              <Route path='/dashboard' element = { <><FeaturedInfo/><ListInvestmentComponent/><Donut/></>} ></Route>
               <Route path='/' element ={<Login/>}></Route>
               <Route path='/investments'  element = { <ListInvestmentComponent/>}></Route>
               <Route path='/addinvestment'  element = { <AddInvestmentComponent/>}></Route>

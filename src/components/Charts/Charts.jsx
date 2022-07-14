@@ -19,6 +19,7 @@ export const Charts = () => {
 
   useEffect(() => {
     getdata();
+    window.scrollTo(0, 0);
 
   }, [])
 

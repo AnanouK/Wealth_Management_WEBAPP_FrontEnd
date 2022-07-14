@@ -24,6 +24,7 @@ const ListInvestmentComponent = () => {
 
           
         getAllInvestments();
+        window.scrollTo(0, 0);
     }
     }, [])
     
@@ -43,7 +44,7 @@ const ListInvestmentComponent = () => {
 
     const arrow1 = (e) => {
 
-        if ( e.actual >= e.capital)
+        if ( e.actual > e.capital)
         {
             return  <span className='up'>
                     <ArrowUpward className="featuredIcon"/> 
@@ -51,11 +52,13 @@ const ListInvestmentComponent = () => {
                     </span>
         }   
 
-        else
+        else if (e.actual < e.capital)
+        {
             return   <span className='down'>
-                    <ArrowDownward className="featuredIcon"/> 
-                    <span>-</span>
+                    <ArrowDownward className="featuredIconnegative"/> 
+                    <span>{Number(((e.actual - e.capital) / e.capital) * 100).toFixed(2)} %</span>
                     </span> 
+        }
 
         }
 
@@ -102,9 +105,9 @@ const ListInvestmentComponent = () => {
                             <td className="cellule"> {investment.id}</td>
                             <td className="cellule"> {investment.name}</td>
                             <td className="cellule"> {investment.start}</td>
-                            <td className="cellule"> {investment.capital} €</td>
-                            <td className="cellule"> {investment.actual} €</td>
-                            <td className="cellule"> {investment.benefice} €
+                            <td className="cellule"> {investment.capital.toLocaleString()} €</td>
+                            <td className="cellule"> {investment.actual.toLocaleString()} €</td>
+                            <td className="cellule"> {investment.benefice.toLocaleString()} €
                                 {arrow1(investment)}
                             </td>
                             <td className="celluleboutons">
