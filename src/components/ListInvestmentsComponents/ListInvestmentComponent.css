@@ -1,39 +1,34 @@
 .listcontainer{
 margin-top : 100px;
-color : white;
+color : #111827;
 margin-bottom: 300px;
 
 }
 
+.table{
+    background-color: #111827;
+}
+
 .items {
 text-align : center;
-color : white;
+color : #111827;
 }
 .table{
 margin-top : 20px;
 font-size: 18px;
 font-weight: 600;
-border: 1px solid gray;
+border: 1px solid #111827;
 }
 
 .title{
 text-align : center;
 }
 
-.test2 {
-background-color : white;
-}
-
-
-
-.test1{
-    text-align: center;
-}
 
 .items1
 {
     width: 300px;
-    color: white;
+    color: #111827;
     text-align: center;
 }
 
@@ -54,4 +49,16 @@ background-color : white;
 
 .celluleboutons{
     background-color: red;
+}
+.cellule{
+    margin-top: 100px;
+}
+
+.btn.btn-info{
+    background-color: white;
+    border: none;
+}
+.btn.btn-info:hover{
+    background-color: white;
+    border: none;
 }

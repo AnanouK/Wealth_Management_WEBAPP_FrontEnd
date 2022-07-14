@@ -7,26 +7,32 @@ import FeaturedInfo from './components/Features/FeaturedInfo';
 import { AddInvestmentComponent } from './components/AddInvestmentComponent/AddInvestmentComponent';
 import Charts from './components/Charts/Charts';
 import Login from "./components/Login/Login"
+import { UserContextProvider } from './utils/UserContext';
+
 
 
 function App() {
+
   return (
+
+<UserContextProvider>
   <div className='App'>
     <Router>
+      
         <HeaderComponent/>
-        <Sidebar/>
         <div className="container">
           <Routes>
-              <Route path='/:username' element = { <><FeaturedInfo/><ListInvestmentComponent/></>} ></Route>
+              <Route path='/dashboard' element = { <><FeaturedInfo/><ListInvestmentComponent/></>} ></Route>
               <Route path='/' element ={<Login/>}></Route>
-              <Route path='/investments/:username'  element = { <ListInvestmentComponent/>}></Route>
-              <Route path='/addinvestment/:username'  element = { <AddInvestmentComponent/>}></Route>
-              <Route path='/update/:id:username'  element = { <AddInvestmentComponent/>}></Route>
-              <Route path='/statistics/:username'  element = { <Charts/>}></Route>
+              <Route path='/investments'  element = { <ListInvestmentComponent/>}></Route>
+              <Route path='/addinvestment'  element = { <AddInvestmentComponent/>}></Route>
+              <Route path='/update/:id'  element = { <AddInvestmentComponent/>}></Route>
+              <Route path='/statistics/:name'  element = { <Charts/>}></Route>
           </Routes>
          </div>
     </Router>
     </div>
+</UserContextProvider>
       
     
   );

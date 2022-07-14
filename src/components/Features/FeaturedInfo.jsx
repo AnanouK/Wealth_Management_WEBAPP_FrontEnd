@@ -1,35 +1,37 @@
 import "./FeaturedInfo.css";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
-import getdata from './FeaturedInfoService';
 import React , {useState, useEffect} from 'react'
 import axios from "axios";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
+import { useUserContext } from "../../utils/UserContext";
 
 
 
 const FeaturedInfo = () => {
 
     const navigate = useNavigate();
-    const {username} = useParams();
+    const {username} = useUserContext();
 
-    const INVESTMENT_ALL = "http://34.160.0.103/investments/alldata/" + username;
+    const INVESTMENT_ALL = "http://34.160.0.103/investments/alldata";
     const [alldata, setalldata] = useState([])
 
     useEffect(() => {
       if (!username){
-        navigate("/login");
+        navigate("/");
       }
       else{
-       axios.get(INVESTMENT_ALL);
+       axios.get(INVESTMENT_ALL, {
+        params: {
+          username: username,
+        },
+      }).then(res => {
+        setalldata(res.data);
+      })
+      
       }
 
     }, [])
 
-    const getthedata = () => {
-      getdata.getall().then((Response) =>{
-        setalldata(Response.data);
-    })
-    }
     const arrow1 = () => {
 
       if ( alldata.actual >= alldata.base)
@@ -37,7 +39,7 @@ const FeaturedInfo = () => {
           return  <ArrowUpward className="featuredIcon"/>;
       }
 
-      else return  <ArrowDownward className="featuredIcon"/>
+      else return  <ArrowDownward className="featuredIconnegative"/>
     }
 
 
@@ -45,19 +47,16 @@ const FeaturedInfo = () => {
 
     <div className="featured">
       <div className="featuredItem">
-        <span className="featuredTitle">Capital de base</span>
+        <span className="featuredTitle">Patrimoine de base</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">{alldata.base} €</span>
-           
+          <span className="featuredMoney">{alldata.base} €</span>      
         </div>
-        <span className="featuredSub">De tous les investissements</span>
       </div>
       <div className="featuredItem">
-        <span className="featuredTitle">Capital actuel</span>
+        <span className="featuredTitle">Patrimoine actuel</span>
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">{alldata.actual} €</span>
         </div>
-        <span className="featuredSub">De tous les investissements</span>
       </div>
       <div className="featuredItem">
         <span className="featuredTitle">Bénéfice total</span>
@@ -69,7 +68,6 @@ const FeaturedInfo = () => {
           </span>
           
         </div>
-        <span className="featuredSub">Comparé au capital de base</span>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import "./Charts.css";
 import axios from "axios";
 import { useState, useEffect} from "react"
+import { useUserContext } from '../../utils/UserContext';
 
 
 export const Charts = () => {
@@ -10,9 +11,9 @@ export const Charts = () => {
   const {name} = useParams();
   const [data, setdata] = useState([]);
 
-  const {username} = useParams();
+  const {username} = useUserContext();
   const INGRESS_API = "34.160.0.103";
-  const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof/";
+  const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof";
   
   
 
@@ -22,21 +23,23 @@ export const Charts = () => {
   }, [])
 
   const getdata = () =>{
-    axios.get(STATISTICSDATA + name +"/" + username).then(res =>{
+    axios.get(STATISTICSDATA, {
+      params: {
+        investmentName: name,
+        clientUsername : username,
+      },
+    }).then(res =>{
       setdata(res.data);
     })}
 
-
-  var test = data;
-
     return (
-        <div className='container'>
+        <div className='newcontainer'>
           <h2 className='title'> Evolution du capital de l'investissement : {name}</h2>
         <ResponsiveContainer width="90%" aspect={3}>
         <LineChart
           width={500}
           height={300}
-          data={[test]}
+          data={data}
           margin={{
             top: 15,
             right: 30,
@@ -55,7 +58,6 @@ export const Charts = () => {
 
       <table className='table table-bordered table-striped'>
             <thead>
-                <th className="items"> Nom</th>
                 <th className="items"> Date</th>
                 <th className="items"> Capital</th>
  
@@ -65,7 +67,6 @@ export const Charts = () => {
                     data.map(
                         line =>
                         <tr className="test1" key={line.Date}>
-                            <td className="cellule"> {name}</td>
                             <td className="cellule"> {line.Date}</td>
                             <td className="cellule"> {line.Capital} €</td>
                         </tr>

@@ -9,10 +9,11 @@ import "./AddInvestmentComponent.css"
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import axios from "axios";
+import { useUserContext } from "../../utils/UserContext";
 
 export const AddInvestmentComponent = () => {
 
-    const {username} = useParams();
+    const {username} = useUserContext();
     const [name, setname] = useState("")
     const [start, setstart] = useState("")
     const [capital, setcapital] = useState(0)
@@ -28,14 +29,16 @@ export const AddInvestmentComponent = () => {
 
             const investment = {name,start,capital,actual,username}
             InvestmentService.saveInvestment(investment);  
-            setTimeout(() => navigate("/" + username), 500);    
+            console.log("Pas de Id" + investment);
+            setTimeout(() => navigate("/dashboard"), 500);    
         }
 
         else {
 
-            const newinvestment = {name,start,capital,actual};
+            const newinvestment = {name,start,capital,actual,username};
+            console.log("Un Id" + newinvestment);
             InvestmentService.updateInvestment(newinvestment,id);
-            setTimeout(() => navigate("/"+ username), 500); 
+            setTimeout(() => navigate("/dashboard"), 500); 
         }
 
 
@@ -50,7 +53,11 @@ export const AddInvestmentComponent = () => {
 
     const getsingleinvest = (id) => {
 
-        axios.get("http://34.160.0.103/investments/"+id).then(res => {
+        axios.get("http://34.160.0.103/investments/", {
+            params: {
+              id: id,
+            },
+          }).then(res => {
             setname(res.data.name);
             setstart(res.data.start);
             setcapital(res.data.capital);
@@ -89,7 +96,7 @@ export const AddInvestmentComponent = () => {
   return (
     <div>
         <br />
-        <div className="container">
+        <div className="containeraddinvest">
             <div className="row">
                 <div className="card col-md-6 offset-md-3 offset-md-3">
                     <br />
@@ -112,9 +119,16 @@ export const AddInvestmentComponent = () => {
                                 <label className="form-label"> Capital Actuel : </label>
                                 <input type="number" placeholder="1500" name="actual" className="form-control" value={actual} onChange = {(e) => setactual(e.target.value)} />
                             </div>
+                            <div className="form-group mb-2">
+                                <label className="form-label"> Remplissage </label>
+                                <select className="form-select" aria-label="Default select example" defaultValue={"Manuel"}>
+                                    <option value="Manuel">Manuel</option>
+                                    <option value="Automatique">Automatique(En construction)</option>
+                                </select>
+                            </div>
                             <br />
                             <Button variant="contained" endIcon={<SendIcon />} style={{marginRight : "10px"}} onClick={(e) => saveInvestment(e) }> {submitchange()} </Button> 
-                            <Button  variant="contained" color="error" startIcon={<DeleteIcon />}> <Link to="/investments" className="linkbutton">Annuler</Link> </Button>
+                            <Button  variant="contained" color="error" startIcon={<DeleteIcon />}> <Link to={"/dashboard"} className="linkbutton">Annuler</Link> </Button>
                         </form>
 
                     </div>

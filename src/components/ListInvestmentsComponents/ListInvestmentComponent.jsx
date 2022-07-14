@@ -3,18 +3,22 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import "./ListInvestmentComponent.css"
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import axios from 'axios';
+import EditIcon from '@mui/icons-material/Edit';
+import Fab from '@mui/material/Fab';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import { useUserContext } from '../../utils/UserContext';
 
 
 
 const ListInvestmentComponent = () => {
 
-    const {username} = useParams();
+    const {username} = useUserContext();
 
     const [investments, setinvestments] = useState([])
 
     useEffect(() => {
         if (!username){
-            navigate("/login");
+            navigate("/");
           }
           else{
 
@@ -24,10 +28,14 @@ const ListInvestmentComponent = () => {
     }, [])
     
     const INGRESS_API = "34.160.0.103";
-    const INVESTMENT_BASE_API_URL = "http://" + INGRESS_API + "/investments/allinvestments/" +username;
+    const INVESTMENT_BASE_API_URL = "http://" + INGRESS_API + "/investments/allinvestments";
 
     const getAllInvestments = () => {
-        return axios.get(INVESTMENT_BASE_API_URL).then(res => {
+        return axios.get(INVESTMENT_BASE_API_URL, {
+            params: {
+              username: username,
+            },
+          }).then(res => {
             setinvestments(res.data);
         })
 
@@ -56,8 +64,16 @@ const ListInvestmentComponent = () => {
     const deleteinvest = (id,name) => {
 
         if(window.confirm("Etes-vous sur de vouloir supprimer cet investissement ?")){
-            axios.delete("http://34.160.0.103/investments/delete/"+id);
-            axios.delete("http://34.160.0.103/statistics/delete/"+name);
+            axios.delete("http://34.160.0.103/investments/delete", {
+                params: {
+                  id: id,
+                },
+              });
+            axios.delete("http://34.160.0.103/statistics/delete", {
+                params: {
+                  name: name,
+                },
+              });
 
             setTimeout(() => getAllInvestments(), 500); 
 
@@ -67,7 +83,7 @@ const ListInvestmentComponent = () => {
 
   return (
     <div className='listcontainer'>
-        <h2 className ="title"> Liste des investissements</h2>
+        <h2 className ="title"> Liste des Actifs/Passifs</h2>
         <table className='table table-bordered table-striped'>
             <thead>
                 <th className="items"> Id</th>
@@ -92,8 +108,8 @@ const ListInvestmentComponent = () => {
                                 {arrow1(investment)}
                             </td>
                             <td className="celluleboutons">
-                                <Link className='btn btn-info' to={'/update/'+ investment.id}> Modifier</Link>
-                                <Link to={"/statistics/"+investment.name+"/"+ username}> <button className='btn btn-primary' style = {{marginLeft : "10px"}}> Statistiques</button></Link>
+                                <Link className='btn btn-info' to={'/update/'+ investment.id}> <Fab color="info" size='small' aria-label="edit"><EditIcon /></Fab></Link>
+                                <Link to={"/statistics/"+investment.name}><AnalyticsIcon  style={{ fontSize: 40 }} color='primary'/></Link>
                                 <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={() => deleteinvest(investment.id, investment.name)}> X</button>
                                 
 
@@ -104,7 +120,7 @@ const ListInvestmentComponent = () => {
             </tbody>
             
         </table>
-        <Link to= {"/addinvestment/" + username} style={{width : "100%"}} className="btn btn-primary mb-2" > Ajouter</Link>
+        <Link to= {"/addinvestment"} style={{width : "100%"}} className="btn btn-primary mb-2" > Ajouter</Link>
         
     
     

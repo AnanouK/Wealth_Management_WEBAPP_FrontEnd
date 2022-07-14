@@ -1,9 +1,10 @@
 .Auth-form {
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding-top: 2%;
+  padding-bottom: 5%;
   border-radius: 8px;
   background-color: white;
+  align-content: center;
 }
 
 .Auth-form-content {
