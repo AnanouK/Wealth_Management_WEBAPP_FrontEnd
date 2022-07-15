@@ -8,8 +8,8 @@ metadata:
     tier: database
 spec:
   ports:
-    - port: 3307
-      targetPort: 3307
+    - port: 3306
+      targetPort: 3306
   selector:
     app: mysql
     tier: database
@@ -54,15 +54,15 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql
-          imagePullPolicy: "IfNotPresent"
+          image: mysql:latest
+          imagePullPolicy: "Always"
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: root
             - name: MYSQL_DATABASE
               value: investments
           ports:
-            - containerPort: 3307
+            - containerPort: 3306
               name: mysql
           volumeMounts:
             - mountPath: /var/lib/mysql
