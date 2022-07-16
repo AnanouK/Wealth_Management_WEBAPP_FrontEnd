@@ -1,41 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: investment-service
+  name: users-service
 spec:
   selector:
     matchLabels:
-      app: investment-service
+      app: users-service
   replicas: 1
   template:
     metadata:
       labels:
-        app: investment-service
+        app: users-service
     spec:
       containers:
-        - name: investment-service
-          image: venenium/investmentservice:latest
+        - name: users-service
+          image: venenium/userservice:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
           env:   # Setting Environmental Variables
             - name: DB_HOST   # Setting Database host address
-              value: investment-database
+              value: user-database
             - name: DB_NAME  # Setting Database name
-              value: investments
+              value: users
             - name: DB_USERNAME  # Setting Database username
               value: root
             - name: DB_PASSWORD # Setting Database password
               value: root
 ---
+
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
-  name: investment-service
+  name: users-service
 spec:
   type: NodePort
   selector:
-    app: investment-service
+    app: users-service
   ports:
     - protocol: "TCP"
       port: 80 # The port that the service is running on in the cluster

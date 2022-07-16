@@ -18,6 +18,15 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          env:   # Setting Environmental Variables
+            - name: DB_HOST   # Setting Database host address
+              value: statistic-database
+            - name: DB_NAME  # Setting Database name
+              value: investments
+            - name: DB_USERNAME  # Setting Database username
+              value: root
+            - name: DB_PASSWORD # Setting Database password
+              value: root
 ---
 
 apiVersion: v1 # Kubernetes API version
