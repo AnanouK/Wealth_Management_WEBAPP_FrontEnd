@@ -9,6 +9,7 @@ import Charts from './components/Charts/Charts';
 import Login from "./components/Login/Login"
 import { UserContextProvider } from './utils/UserContext';
 import { Donut } from './components/Donut/Donut';
+import Register from './components/Register/register';
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Routes>
               <Route path='/dashboard' element = { <><FeaturedInfo/><ListInvestmentComponent/><Donut/></>} ></Route>
               <Route path='/' element ={<Login/>}></Route>
+              <Route path='/register' element ={<Register/>}></Route>
               <Route path='/investments'  element = { <ListInvestmentComponent/>}></Route>
               <Route path='/addinvestment'  element = { <AddInvestmentComponent/>}></Route>
               <Route path='/update/:id'  element = { <AddInvestmentComponent/>}></Route>

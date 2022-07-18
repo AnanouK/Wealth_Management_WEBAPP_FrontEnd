@@ -1,18 +1,18 @@
-.Auth-form {
+.Auth-form-register {
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
   padding-top: 2%;
+  padding-bottom: 5%;
   border-radius: 8px;
   background-color: white;
   align-content: center;
-  height: 340px;
 }
 
-.Auth-form-content {
+.Auth-form-content-register {
   padding-left: 12%;
   padding-right: 12%;
 }
 
-.Auth-form-title {
+.Auth-form-title-register {
   text-align: center;
   margin-bottom: 1em;
   font-size: 24px;
@@ -24,10 +24,4 @@ label {
   font-size: 14px;
   font-weight: 600;
   color: rgb(34, 34, 34);
-}
-
-.createaccount{
-  text-align: center;
-  padding-top: 2%;
-  padding-bottom: 0%;
 }

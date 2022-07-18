@@ -111,7 +111,7 @@ const ListInvestmentComponent = () => {
                                 {arrow1(investment)}
                             </td>
                             <td className="celluleboutons">
-                                <Link className='btn btn-info' to={'/update/'+ investment.id}> <Fab color="info" size='small' aria-label="edit"><EditIcon /></Fab></Link>
+                                <Link className='btn btn-info' to={'/update/'+ investment.id}> <Fab color="info" size='small' aria-label="edit" ><EditIcon /></Fab></Link>
                                 <Link to={"/statistics/"+investment.name}><AnalyticsIcon  style={{ fontSize: 40 }} color='primary'/></Link>
                                 <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={() => deleteinvest(investment.id, investment.name)}> X</button>
                                 
