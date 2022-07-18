@@ -63,7 +63,7 @@ spec:
               value: investments
           ports:
             - containerPort: 3306
-              name: investment-database
+              name: investment-db
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: mysql-persistance-storage
