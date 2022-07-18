@@ -22,7 +22,7 @@ spec:
             - name: DB_HOST   # Setting Database host address
               value: statistic-database
             - name: DB_NAME  # Setting Database name
-              value: investments
+              value: statistics
             - name: DB_USERNAME  # Setting Database username
               value: root
             - name: DB_PASSWORD # Setting Database password
