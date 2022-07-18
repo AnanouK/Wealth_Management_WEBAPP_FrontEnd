@@ -26,21 +26,16 @@ export const Login = () => {
       },
     }).then(res => {
       result = res.data;
+      if (result === "success") {
+        logIn(nom); 
+        navigate("/dashboard");    
+      }
+      else 
+      {
+        setnom("");
+        setpassword("");
+      }
     })
-
-    if (result === "success") {
-      logIn(nom); 
-      navigate("/dashboard");    
-    }
-    else 
-    {
-      console.log("test");
-      setnom("");
-      setpassword("");
-    }
-
-
-
   }
 
   return (

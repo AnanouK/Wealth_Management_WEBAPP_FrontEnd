@@ -6,7 +6,7 @@ import axios from "axios";
 
 export const Login = () => {
 
-  const [nom, setnom] = useState("")
+  const [username, setusername] = useState("")
   const [password, setpassword] = useState("")
   const [email, setemail] = useState("")
 
@@ -16,18 +16,21 @@ export const Login = () => {
 
   const register = (e) => {
     e.preventDefault();
-    const user = [nom,email,password]
-    axios.get(USER_BASE_API_URL + "add",user).then(res => {
-      if(res.data === "Création de l'utilisateur avec success")
-      {
-        navigate("/login");
-      }
-      else 
-      {
-        navigate("/register");
-      }
-    })
+    const user = {username,email,password}
+    var result;
     
+    axios.post(USER_BASE_API_URL + "add",user).then(res => {
+       result = res.data;
+       if(result === "Création de l'utilisateur avec success")
+       {
+         console.log("test");
+         navigate("/");
+       }
+       else 
+       {
+         setusername("");
+       }
+    })
 
   }
 
@@ -42,7 +45,7 @@ export const Login = () => {
               required
               className="form-control mt-1"
               placeholder="votre nom d'utilisateur"
-              value={nom} onChange = {(e) => setnom(e.target.value)}
+              value={username} onChange = {(e) => setusername(e.target.value)}
             />
           </div>
           <div className="form-group mt-2">
