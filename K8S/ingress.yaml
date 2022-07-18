@@ -29,3 +29,10 @@ spec:
             name: statistics-service
             port:
               number: 80
+      - path: /users/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: users-service
+            port:
+              number: 80
