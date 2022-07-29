@@ -5,10 +5,13 @@
     border-radius: 20px;
     border: 1px solid #8884d8;
 }
-
+.donut
+{
+   padding-bottom: 50px;
+}
 .titlestats{
     text-align: center;
     color: white;
     padding-bottom: 25px;
-    padding-top: 20px;
+    padding-top: 100px;
 }

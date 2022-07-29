@@ -41,6 +41,7 @@ export const Donut = () => {
 
     return( 
         <React.Fragment>
+            <div className="donut">
             <h2 className="titlestats">Répartition du patrimoine total</h2>
         <div className="container-fluid mb-3">
                 <Chart 
@@ -71,6 +72,7 @@ export const Donut = () => {
                 >
                 </Chart>
 
+        </div>
         </div>
         </React.Fragment>
     )

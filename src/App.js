@@ -24,7 +24,7 @@ function App() {
         <HeaderComponent/>
         <div className="container">
           <Routes>
-              <Route path='/dashboard' element = { <><FeaturedInfo/><ListInvestmentComponent/><Donut/></>} ></Route>
+              <Route path='/dashboard' element = { <><FeaturedInfo/><Donut/><ListInvestmentComponent/></>} ></Route>
               <Route path='/' element ={<Login/>}></Route>
               <Route path='/register' element ={<Register/>}></Route>
               <Route path='/investments'  element = { <ListInvestmentComponent/>}></Route>
