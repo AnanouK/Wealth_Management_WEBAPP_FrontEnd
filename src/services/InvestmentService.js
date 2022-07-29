@@ -14,9 +14,16 @@ class InvestmentService {
     }
 
     saveInvestment(investment){
-        axios.post(INVESTMENT_ADD_INVESTMENT_SERVICE, investment);
-        axios.post(INVESTMENT_ADD_STATISTICS_SERVICE, investment);
+        axios.post(INVESTMENT_ADD_INVESTMENT_SERVICE, investment).then(response => {
+            if(response.status === 405)
+            {
 
+            }
+            else {
+                axios.post(INVESTMENT_ADD_STATISTICS_SERVICE, investment);
+            }
+        })
+        
     }
 
     updateInvestment(investment,id)
