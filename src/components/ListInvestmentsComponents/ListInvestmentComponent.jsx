@@ -75,14 +75,28 @@ const ListInvestmentComponent = () => {
             axios.delete("http://34.160.0.103/statistics/delete", {
                 params: {
                   name: name,
+                  username: username
                 },
               });
 
-            setTimeout(() => getAllInvestments(), 500); 
+            getAllInvestments();
 
         }
     }
 
+    const deleteAll= () => {
+      axios.delete("http://34.160.0.103/statistics/delete/all", {
+        params: {
+          username: username
+        },
+      });
+      axios.delete("http://34.160.0.103/investments/delete/all", {
+        params: {
+          username: username
+        },
+      });
+      getAllInvestments();
+    }
 
   return (
     <div className='listcontainer'>
@@ -124,6 +138,7 @@ const ListInvestmentComponent = () => {
             
         </table>
         <Link to= {"/addinvestment"} style={{width : "100%"}} className="btn btn-primary mb-2" > Ajouter</Link>
+        <button style={{width : "100%"}} className="btn btn-danger" onClick={() => deleteAll()} > Tout Effacer</button>
         
     
     
