@@ -61,6 +61,7 @@ export const Charts = () => {
             <thead>
                 <th className="items"> Date</th>
                 <th className="items"> Capital</th>
+                <th className='items'>Action</th>
  
             </thead>
             <tbody className="test2">
@@ -70,6 +71,7 @@ export const Charts = () => {
                         <tr className="test1" key={line.Date}>
                             <td className="cellule"> {line.Date}</td>
                             <td className="cellule"> {line.Capital} €</td>
+                            <td className="celluleboutons"><button className='btn btn-danger' style = {{marginLeft : "10px"}}> X</button></td>
                         </tr>
                     )
                 }
