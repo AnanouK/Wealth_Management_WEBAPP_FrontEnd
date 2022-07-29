@@ -49,6 +49,7 @@ export const AddInvestmentComponent = () => {
         {
             getsingleinvest(id);
         }
+        window.scrollTo(0, 0);
     }, [id])
 
     const getsingleinvest = (id) => {
