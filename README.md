@@ -12,6 +12,11 @@ Capture d'écran de l'accueil :
 
 ![1](https://user-images.githubusercontent.com/107629615/181916510-1f8bd5c5-24a3-42d7-b3a3-c4ee2059c58a.PNG)
 
+Capture d'écran de la partie statistique d'un passif :
+
+![1](https://user-images.githubusercontent.com/107629615/181916579-a3d4ec40-7c1f-4f53-abc8-c77e45a3f906.PNG)
+
+
 Concernant kubernetes
 
 - le backend et le frontend sont sur kubernetes et communiquent via un ingress controleur
