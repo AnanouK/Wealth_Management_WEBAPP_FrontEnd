@@ -12,7 +12,7 @@ Cette partie concerne le frontend de mon projet
 
 - Il s'agit d'une simple application de gestionnaire de patrimoine permettant d'afficher la totalité de son patrimoine ainsi que son évolution dans le temps
 - L'application posséde un login et un register, ainsi que plusieurs pages pour différents services
-- L'application est en cours d'amélioration, d'autres services sont en cours de constructions, notamment la possibilités  de récuperer des données automatiques via des API tiers comme BINANCE par exemple.
+- L'application est en cours d'amélioration, d'autres services sont en cours de constructions, notamment la possibilités  de récuperer des données automatiques via des API tiers comme BINANCE par exemple, et la possibilité de faire une simulation de son patrimoine en fonction des performances actuelles.
 
 Capture d'écran de l'accueil :
 
