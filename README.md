@@ -1,3 +1,7 @@
+LIEN DE LA DEMO : http://34.160.0.103 Patrimoine Tracker App
+Nom d'utilisateur pour la demo : demo1
+Mot de passe pour la demo : demo1
+
 Cette partie concerne le frontend de mon projet
 
 - Création d'une one page application en ReactJS
