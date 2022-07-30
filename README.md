@@ -1,4 +1,4 @@
-LIEN DE LA DEMO : http://34.160.0.103 Patrimoine Tracker App
+LIEN DE LA DEMO : http://34.160.0.103
 Nom d'utilisateur pour la demo : demo1
 Mot de passe pour la demo : demo1
 
