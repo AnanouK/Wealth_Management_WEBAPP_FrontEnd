@@ -8,6 +8,10 @@ Cette partie concerne le frontend de mon projet
 - L'application posséde un login et un register, ainsi que plusieurs pages pour différents services
 - L'application est en cours d'amélioration, d'autres services sont en cours de constructions, notamment la possibilités  de récuperer des données automatiques via des API tiers comme BINANCE par exemple.
 
+Capture d'écran de l'accueil :
+
+![1](https://user-images.githubusercontent.com/107629615/181916510-1f8bd5c5-24a3-42d7-b3a3-c4ee2059c58a.PNG)
+
 Concernant kubernetes
 
 - le backend et le frontend sont sur kubernetes et communiquent via un ingress controleur
