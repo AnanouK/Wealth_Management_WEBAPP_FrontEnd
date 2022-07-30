@@ -2,6 +2,8 @@ LIEN DE LA DEMO : http://34.160.0.103
 - Nom d'utilisateur pour la demo : demo1
 - Mot de passe pour la demo : demo1
 
+_________________________________________________________________________________________________________________________________________________________________________
+
 Cette partie concerne le frontend de mon projet
 
 - Création d'une one page application en ReactJS
