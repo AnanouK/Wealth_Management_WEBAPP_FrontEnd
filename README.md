@@ -22,8 +22,4 @@ Capture d'écran de la partie statistique d'un passif :
 ![1](https://user-images.githubusercontent.com/107629615/181916579-a3d4ec40-7c1f-4f53-abc8-c77e45a3f906.PNG)
 
 
-Concernant kubernetes
 
-- le backend et le frontend sont sur kubernetes et communiquent via un ingress controleur
-- Chaque microservices possédent 3 replicas (3 pods) afin d'assurer un fonctionnement optimal et une bonne répartition des charges
-- Chaque microservices possédent ça propre base de données héberger par google kubernetes 
