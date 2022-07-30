@@ -1,6 +1,7 @@
 Cette partie concerne le frontend de mon projet
 
 - Création d'une one page application en ReactJS
+- Les données sont récupérées via des appels d'API vers le backend
 - Deploiment sur kubernetes avec conteneurs docker
 
 - Il s'agit d'une simple application de gestionnaire de patrimoine permettant d'afficher la totalité de son patrimoine ainsi que son évolution dans le temps
