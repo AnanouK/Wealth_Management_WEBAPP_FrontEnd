@@ -12,7 +12,7 @@ Cette partie concerne le frontend de mon projet
 
 - Il s'agit d'une simple application de gestionnaire de patrimoine permettant d'afficher la totalité de son patrimoine ainsi que son évolution dans le temps
 - L'application posséde un login et un register, ainsi que plusieurs pages pour différents services
-- L'application est en cours d'amélioration, d'autres services sont en cours de constructions, notamment la possibilités  de récuperer des données automatiques via des API tiers comme BINANCE par exemple, et la possibilité de faire une simulation de son patrimoine en fonction des performances actuelles.
+- L'application est en cours d'amélioration, d'autres services sont en cours de constructions, notamment la possibilitée de récupérer des données automatiques via des API tiers comme BINANCE par exemple, et la possibilité de faire une simulation de son patrimoine en fonction des performances actuelles.
 
 Capture d'écran de l'accueil :
 
@@ -23,7 +23,7 @@ Capture d'écran de la partie Portefeuille :
 ![1](https://user-images.githubusercontent.com/107629615/181916823-d98efe9b-5690-4a54-bb05-625b07ff2676.PNG)
 
 
-Capture d'écran de la partie statistique d'un passif :
+Capture d'écran de la partie statistique d'un passif/actif :
 
 ![1](https://user-images.githubusercontent.com/107629615/181916579-a3d4ec40-7c1f-4f53-abc8-c77e45a3f906.PNG)
 
