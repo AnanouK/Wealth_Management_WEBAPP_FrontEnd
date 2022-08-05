@@ -61,7 +61,7 @@ const hideonlogin = () => {
           {isMatch ? (
             <>
               <Typography sx={{ fontSize: "2rem", paddingLeft: "10%" }}>
-                Venenium
+                Patrimoine Tracker
               </Typography>
               <DrawerComp />
             </>
@@ -77,8 +77,7 @@ const hideonlogin = () => {
               >
                 <Tab onClick={() => navigate("/dashboard")} label="Dashboard" value={0} defaultChecked disabled={!username}/>
                 <Tab onClick={() => navigate("/investments")} label="Portefeuille" value={1} disabled={!username} />
-                <Tab onClick={() => navigate("/statistics")} label="Statistiques" value={2} disabled={!username} />
-                <Tab onClick={() => navigate("/dashboard")} label="Simulateur" value={3} disabled={!username} />
+                <Tab onClick={() => navigate("/dashboard")} label="Simulateur (En construction)" value={2} disabled="true"/>
               </Tabs>
               <Button sx={{ marginLeft: "auto" }} variant="contained" onClick={connexion}>
               {titlechange()}

@@ -7,8 +7,8 @@ import axios from "axios";
 
 export const Login = () => {
 
-  const [nom, setnom] = useState("")
-  const [password, setpassword] = useState("")
+  const [nom, setnom] = useState("demo1")
+  const [password, setpassword] = useState("demo1")
 
   const navigate = useNavigate();
   const { logIn } = useUserContext();

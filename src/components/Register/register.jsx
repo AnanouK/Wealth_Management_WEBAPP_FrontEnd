@@ -23,7 +23,6 @@ export const Login = () => {
        result = res.data;
        if(result === "Création de l'utilisateur avec success")
        {
-         console.log("test");
          navigate("/");
        }
        else 

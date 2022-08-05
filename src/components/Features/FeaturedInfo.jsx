@@ -55,12 +55,12 @@ const FeaturedInfo = () => {
     }
 
     const colorOfTheBeneficePourcentage = () => {
-      if(alldata.poucentageallbenefice > 0)
+      if(alldata.pourcentageallbenefice > 0)
       {
         return {color: "green"}
       }
 
-      else if (alldata.poucentageallbenefice < 0){
+      else if (alldata.pourcentageallbenefice < 0){
         return {color: "red"}
       }
 
@@ -88,7 +88,7 @@ const FeaturedInfo = () => {
         <div className="featuredMoneyContainer">
           <span className="featuredMoney" defaultValue={0}>{checkBeforeShow(alldata.benefice)} €</span>
           <span className="featuredMoneyRate" style={colorOfTheBeneficePourcentage()}>
-            {alldata.poucentageallbenefice}%
+            {alldata.pourcentageallbenefice}%
             { arrow1 () }
           </span>
           
