@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useNavigate } from "react";
 import {
   Drawer,
   IconButton,
@@ -8,25 +8,32 @@ import {
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-const pages = ["Dashboard", "Portefeuille", "Simlulateur (En construction)"];
+import { Link } from "react-router-dom";
+
+
+const items = [{text :"Dashboard", clic:"/dashboard"},{text :"Portefeuille", clic:"/investments"}];
 const DrawerComp = () => {
-  const [openDrawer, setOpenDrawer] = useState(false);
+const [openDrawer, setOpenDrawer] = useState(false);
+  
 
   return (
     <React.Fragment>
       <Drawer
-        anchor="left"
+        anchor="right"
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
+        color="black"
       >
         <List>
-          {pages.map((page, index) => (
+          <div className="list">
+          {items.map((items, index) => (
             <ListItemButton key={index}>
               <ListItemIcon>
-                <ListItemText>{page}</ListItemText>
+                <ListItemText><Link to={items.clic}>{items.text}</Link></ListItemText>
               </ListItemIcon>
             </ListItemButton>
           ))}
+          </div>
         </List>
       </Drawer>
       <IconButton

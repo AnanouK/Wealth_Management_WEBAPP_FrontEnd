@@ -1,14 +1,14 @@
-import { useParams } from 'react-router-dom';
+
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import "./Charts.css";
+import "./ChartsGlobal.css";
 import axios from "axios";
 import { useState, useEffect} from "react"
 import { useUserContext } from '../../utils/UserContext';
 
 
-export const Charts = () => {
+export const ChartsGlobal = () => {
 
-  const {name} = useParams();
+  const name = "global";
   const [data, setdata] = useState([]);
 
   const {username} = useUserContext();
@@ -47,7 +47,7 @@ export const Charts = () => {
 
     return (
         <div className='newcontainer'>
-          <h2 className='title'> Evolution du capital de l'investissement : {name}</h2>
+          <h2 className='title'> Evolution du patrimoine total : {name}</h2>
         <ResponsiveContainer width="90%" aspect={3}>
         <LineChart
           width={500}
@@ -94,4 +94,4 @@ export const Charts = () => {
     )
 }
 
-export default Charts;
+export default ChartsGlobal;

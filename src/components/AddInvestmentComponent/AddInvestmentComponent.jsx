@@ -24,11 +24,11 @@ export const AddInvestmentComponent = () => {
 
     const saveInvestment = (e) => {
         e.preventDefault();
-        
+
         if(!id){
 
             const investment = {name,start,capital,actual,username}
-            InvestmentService.saveInvestment(investment);  
+            InvestmentService.saveInvestment(investment,username);  
             console.log("Pas de Id" + investment);
             setTimeout(() => navigate("/dashboard"), 500);    
         }
@@ -37,7 +37,7 @@ export const AddInvestmentComponent = () => {
 
             const newinvestment = {name,start,capital,actual,username};
             console.log("Un Id" + newinvestment);
-            InvestmentService.updateInvestment(newinvestment,id);
+            InvestmentService.updateInvestment(newinvestment,id,username);
             setTimeout(() => navigate("/dashboard"), 500); 
         }
 

@@ -60,7 +60,7 @@ const hideonlogin = () => {
           <AutoGraphIcon sx={{ transform: "scale(2)" }} />
           {isMatch ? (
             <>
-              <Typography sx={{ fontSize: "2rem", paddingLeft: "10%" }}>
+              <Typography sx={{ fontSize: "1.5rem", paddingLeft: "10%" }}>
                 Patrimoine Tracker
               </Typography>
               <DrawerComp />

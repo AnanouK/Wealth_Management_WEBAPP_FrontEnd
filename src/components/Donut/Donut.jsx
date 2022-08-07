@@ -9,10 +9,6 @@ export const Donut = () => {
 
     const {username} = useUserContext();
     const [alldata, setalldata] = useState([]);
-    const [investName, setinvestName] = useState("");
-    const [investCapital, setinvestCapital] = useState([]);
-
-    var allcapital = 0;
 
     const INGRESS_API = "34.160.0.103";
     const STATISTICSDATA = "http://" + INGRESS_API + "/investments/allinvestments";
@@ -49,11 +45,11 @@ export const Donut = () => {
                 width={500}
                 height={500}
                 series={capital}   
-                      
 
-                 options={{
-                       noData:{text:"Pas de données"},                        
-                      labels: name,            
+                options={{
+                      noData:{text:"Pas de données"},                        
+                      labels: name, 
+                              
                     }}
                 >
                 </Chart>

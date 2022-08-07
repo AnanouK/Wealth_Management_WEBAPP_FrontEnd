@@ -10,6 +10,7 @@ import Login from "./components/Login/Login"
 import { UserContextProvider } from './utils/UserContext';
 import { Donut } from './components/Donut/Donut';
 import Register from './components/Register/register';
+import ChartsGlobal from './components/ChartsGlobal/ChartsGlobal';
 
 
 
@@ -24,7 +25,7 @@ function App() {
         <HeaderComponent/>
         <div className="container">
           <Routes>
-              <Route path='/dashboard' element = { <><FeaturedInfo/><Donut/><ListInvestmentComponent/></>} ></Route>
+              <Route path='/dashboard' element = { <><FeaturedInfo/><Donut/><ChartsGlobal/></>} ></Route>
               <Route path='/' element ={<Login/>}></Route>
               <Route path='/register' element ={<Register/>}></Route>
               <Route path='/investments'  element = { <ListInvestmentComponent/>}></Route>

@@ -1,4 +1,4 @@
-import "./FeaturedInfo.css";
+import "./FeaturedInfo.scss";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import React , {useState, useEffect} from 'react'
 import axios from "axios";
