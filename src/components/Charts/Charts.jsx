@@ -4,6 +4,8 @@ import "./Charts.css";
 import axios from "axios";
 import { useState, useEffect} from "react"
 import { useUserContext } from '../../utils/UserContext';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const Charts = () => {
@@ -42,8 +44,18 @@ export const Charts = () => {
         },
       }).then(res =>{
         setTimeout(getdata(),1000);
+        toast.success("Supprimé avec succès !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }); 
       })}
 
+      var reversedata = [...data].reverse();
 
     return (
         <div className='newcontainer'>
@@ -78,7 +90,7 @@ export const Charts = () => {
             </thead>
             <tbody className="test2">
                 {
-                    data.map(
+                    reversedata.map(
                         line =>
                         <tr className="test1" key={line.Date}>
                             <td className="cellule"> {line.Date}</td>

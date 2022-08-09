@@ -1,0 +1,40 @@
+.Auth-form-calculator {
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 8px;
+    background-color: white;
+    width: 50%;
+    border: 3px solid #8884d8;
+    margin-left: 25%;
+  }
+  
+  .Auth-form-content-calculator {
+    padding-left: 12%;
+    padding-right: 12%;
+  }
+  
+  .Auth-form-title-calculator {
+    text-align: center;
+    margin-bottom: 2em;
+    font-size: 24px;
+    color: rgb(34, 34, 34);
+    font-weight: 800;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(34, 34, 34);
+  }
+
+  @media screen and (max-width:1000px) {
+    .Auth-form-calculator {
+    width: 100%; 
+    margin-left: 0%;
+    margin-top: 50px;
+    }
+    .featuredItem{
+     margin : 10px 10px;
+    }
+  }

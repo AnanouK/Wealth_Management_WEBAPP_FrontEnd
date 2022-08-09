@@ -4,7 +4,7 @@ import "./register.css";
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
 
-export const Login = () => {
+export const Register = () => {
 
   const [username, setusername] = useState("")
   const [password, setpassword] = useState("")
@@ -75,4 +75,4 @@ export const Login = () => {
   )
 }
 
-export default Login;
+export default Register;

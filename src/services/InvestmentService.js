@@ -1,5 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const INGRESS_API = "34.160.0.103";
 const INVESTMENT_BASE_API_URL = "http://" + INGRESS_API + "/investments/allinvestments";
@@ -18,7 +19,15 @@ class InvestmentService {
         axios.post(INVESTMENT_ADD_INVESTMENT_SERVICE, investment).then(response => {
             if(response.status === 405)
             {
-
+              toast.error("Nous rencontrons une erreur :(, merci de réessayer plus tard !", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                }); 
             }
             else {
                 axios.post(INVESTMENT_ADD_STATISTICS_SERVICE, investment);
@@ -33,6 +42,16 @@ class InvestmentService {
                     var global = {name:"global",start:date,capital:0,actual:actual,username:username};
                     axios.post(INVESTMENT_ADD_STATISTICS_SERVICE,global);
                   });
+
+                  toast.success("Nouvel Investissement crée !", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    }); 
             }
         })
         
@@ -57,6 +76,16 @@ class InvestmentService {
           var global = {name:"global",start:date,capital:0,actual:actual,username:username};
           axios.post(INVESTMENT_ADD_STATISTICS_SERVICE,global);
         });
+
+        toast.success("Votre investissement est modifié !", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }); 
     }
 
     getInvestmentById(investmentId)

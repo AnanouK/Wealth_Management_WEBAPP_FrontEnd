@@ -1,5 +1,5 @@
 import React , {useState, useEffect} from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import "./ListInvestmentComponent.css"
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import axios from 'axios';
@@ -7,6 +7,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import { useUserContext } from '../../utils/UserContext';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -89,7 +91,17 @@ const ListInvestmentComponent = () => {
                 var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
                 var global = {name:"global",start:date,capital:0,actual:actual,username:username};
               });
-
+            
+              toast.success("Supprimé avec succès", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+                 
             setTimeout(getAllInvestments(),1500);
 
         }
@@ -124,7 +136,6 @@ const ListInvestmentComponent = () => {
         <h2 className ="title"> Liste des Actifs/Passifs</h2>
         <table className='table table-bordered table-striped'>
             <thead>
-                <th className="items"> Id</th>
                 <th className="items"> Nom</th>
                 <th className="items"> Date de départ</th>
                 <th className="items"> Capital de départ</th>
@@ -137,7 +148,6 @@ const ListInvestmentComponent = () => {
                     investments.map(
                         investment =>
                         <tr className="test1" key={investment.id}>
-                            <td className="cellule"> {investment.id}</td>
                             <td className="cellule"> {investment.name}</td>
                             <td className="cellule"> {investment.start}</td>
                             <td className="cellule"> {investment.capital.toLocaleString()} €</td>

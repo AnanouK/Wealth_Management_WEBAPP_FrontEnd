@@ -77,7 +77,7 @@ const hideonlogin = () => {
               >
                 <Tab onClick={() => navigate("/dashboard")} label="Dashboard" value={0} defaultChecked disabled={!username}/>
                 <Tab onClick={() => navigate("/investments")} label="Portefeuille" value={1} disabled={!username} />
-                <Tab onClick={() => navigate("/dashboard")} label="Simulateur (En construction)" value={2} disabled="true"/>
+                <Tab onClick={() => navigate("/calculator")} label="Simulateur (En construction)" value={2} disabled={!username}/>
               </Tabs>
               <Button sx={{ marginLeft: "auto" }} variant="contained" onClick={connexion}>
               {titlechange()}

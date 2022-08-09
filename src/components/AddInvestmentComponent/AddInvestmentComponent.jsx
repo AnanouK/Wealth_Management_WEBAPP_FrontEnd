@@ -1,12 +1,11 @@
 import { useState } from "react"
 import React from 'react'
 import InvestmentService from "../../services/InvestmentService"
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import DeleteIcon from '@mui/icons-material/Delete';
 import "./AddInvestmentComponent.css"
-import { toast } from "react-toastify";
 import { useEffect } from "react";
 import axios from "axios";
 import { useUserContext } from "../../utils/UserContext";
@@ -29,16 +28,14 @@ export const AddInvestmentComponent = () => {
 
             const investment = {name,start,capital,actual,username}
             InvestmentService.saveInvestment(investment,username);  
-            console.log("Pas de Id" + investment);
-            setTimeout(() => navigate("/dashboard"), 500);    
+            setTimeout(() => navigate("/investments"), 500);    
         }
 
         else {
 
             const newinvestment = {name,start,capital,actual,username};
-            console.log("Un Id" + newinvestment);
             InvestmentService.updateInvestment(newinvestment,id,username);
-            setTimeout(() => navigate("/dashboard"), 500); 
+            setTimeout(() => navigate("/investments"), 500); 
         }
 
 
