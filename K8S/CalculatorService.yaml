@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator
+  template:
+    metadata:
+      labels:
+        app: calculator
+    spec:
+      containers:
+        - name: calculator
+          image: venenium/calculatorservice:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculator-service
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: calculator

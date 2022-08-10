@@ -36,3 +36,11 @@ spec:
             name: users-service
             port:
               number: 80
+      - path: /calculator/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: calculator-service
+            port:
+              number: 80
+              
