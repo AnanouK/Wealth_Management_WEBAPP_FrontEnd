@@ -44,9 +44,6 @@ text-align : center;
     font-size: 14px;
 }
 
-.celluleboutons{
-    width: 15%;
-}
 .cellule{
     margin-top: 100px;
 }
@@ -64,7 +61,7 @@ text-align : center;
     .test3{
         font-size: 13px;
     }
-    .cellule{
+    .cellule ,.cellulebenefice{
         font-size: 13px;
     }
     span{
@@ -80,21 +77,17 @@ text-align : center;
     .test3{
         font-size: 10px;
     }
-    .cellule{
+    .cellule ,.cellulebenefice{
         font-size: 10px;
-    }
-    .celluleboutons{
-        display: flex;
-    }
-    th.items1{
-        width: 20px;
     }
     .listcontainer{
         width: 100%;
     }
-
     span{
         font-size: 10px;
+    }
+    .cellulebenefice{
+        
     }
 
 

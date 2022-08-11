@@ -21,12 +21,6 @@
     font-weight: 800;
   }
   
-  label {
-    font-size: 14px;
-    font-weight: 600;
-    color: rgb(34, 34, 34);
-  }
-
   .celluleearn{
     color: green;
     padding-top: 5px;
@@ -64,6 +58,10 @@
 
     .celluleabove{
       font-size: 10px;
+    }
+    .lastLine
+    {
+      font-size: 13px;
     }
   }
 

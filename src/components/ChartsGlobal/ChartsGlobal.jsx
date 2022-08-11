@@ -17,12 +17,26 @@ export const ChartsGlobal = () => {
   const INGRESS_API = "34.160.0.103";
   const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof";
   const DELETEONE = "http://" + INGRESS_API + "/statistics/delete/onestat";
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
   
-  
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
 
   useEffect(() => {
     getdata();
     window.scrollTo(0, 0);
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
 
   }, [])
 
@@ -57,12 +71,13 @@ export const ChartsGlobal = () => {
       })}
 
       var reversedata = [...data].reverse();
+      
 
     return (
       
         <div className='newcontainer'>
           <h2 className='title'> Evolution du patrimoine total : {name}</h2>
-        <ResponsiveContainer width="100%" aspect={3}>
+        <ResponsiveContainer width="95%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
         <LineChart
           width={500}
           height={300}

@@ -17,12 +17,29 @@ export const Charts = () => {
   const INGRESS_API = "34.160.0.103";
   const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof";
   const DELETEONE = "http://" + INGRESS_API + "/statistics/delete/onestat";
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
   
   
 
   useEffect(() => {
     getdata();
     window.scrollTo(0, 0);
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+
 
   }, [])
 
@@ -60,14 +77,12 @@ export const Charts = () => {
     return (
         <div className='newcontainer'>
           <h2 className='title'> Evolution du capital de l'investissement : {name}</h2>
-        <ResponsiveContainer width="100%" aspect={2}>
+        <ResponsiveContainer width="95%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
         <LineChart
-          width={500}
-          height={300}
           data={data}
           margin={{
             top: 15,
-            right: 20,
+            right: 50,
             bottom: 5,
           }}
         >
@@ -80,7 +95,7 @@ export const Charts = () => {
         </LineChart>
       </ResponsiveContainer>
 
-      <table className='table table-bordered table-striped'>
+      <table className='table table-bordered'>
             <thead>
                 <th className="items">Date</th>
                 <th className="items">Capital</th>
@@ -92,15 +107,16 @@ export const Charts = () => {
                     reversedata.map(
                         line =>
                         <tr className="test1" key={line.Date}>
-                            <td className="cellule"> {line.Date}</td>
-                            <td className="cellule"> {line.Capital} €</td>
-                            <td className="celluleboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
+                            <td className="cellulecharts"> {line.Date}</td>
+                            <td className="cellulecharts"> {line.Capital} €</td>
+                            <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
                         </tr>
                     )
                 }
             </tbody>
             
         </table>
+        <div className='fill' hidden={windowSize.innerWidth<= 1000 ? (false) : (true)}></div>
     </div>
     )
 }

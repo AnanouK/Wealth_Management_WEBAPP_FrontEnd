@@ -12,11 +12,28 @@ export const Donut = () => {
 
     const INGRESS_API = "34.160.0.103";
     const STATISTICSDATA = "http://" + INGRESS_API + "/investments/allinvestments";
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
+
 
 
     
     useEffect(() => {
         getdata();
+        function handleWindowResize() {
+          setWindowSize(getWindowSize());
+        }
+    
+        window.addEventListener('resize', handleWindowResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleWindowResize);
+        };
      
        }, []);
 
@@ -66,33 +83,36 @@ export const Donut = () => {
                   }}
                 >
                 </Chart>
-
-                <Chart 
-                type="pie"
-                width={550}
-                height={550}
-                series={capital}   
-                    
-                 options={{
-                      noData:{text:"Pas de données"},                        
-                      labels: name,  
-                      legend: {position: "right"},
-                      responsive: [{
-                        breakpoint: 1200,
-                        options: {
-                          chart: {
-                            width: 350,
-                            height: 350,
-                          },
-                          legend: {
-                            position: 'bottom',
-                            show: false,
+                
+                {windowSize.innerWidth >= 1000 ? (
+                  <Chart
+                  
+                  type="pie"
+                  width={550}
+                  height={550}
+                  series={capital}   
+                      
+                  options={{
+                        noData:{text:"Pas de données"},                        
+                        labels: name,  
+                        legend: {position: "right"},
+                        responsive: [{
+                          breakpoint: 1200,
+                          options: {
+                            chart: {
+                              width: 350,
+                              height: 350,
+                            },
+                            legend: {
+                              position: 'bottom',
+                              show: false,
+                            }
                           }
-                        }
-                      }]          
-                    }}
-                >
-                </Chart>
+                        }]          
+                      }}
+                  >
+                  </Chart>
+              ) : (null)}
 
         </div>
         </div>

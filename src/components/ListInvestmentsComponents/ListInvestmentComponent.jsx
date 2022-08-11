@@ -15,8 +15,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const ListInvestmentComponent = () => {
 
     const {username} = useUserContext();
-
     const [investments, setinvestments] = useState([])
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  
+    function getWindowSize() {
+      const {innerWidth, innerHeight} = window;
+      return {innerWidth, innerHeight};
+    }
 
     useEffect(() => {
         if (!username){
@@ -27,6 +33,15 @@ const ListInvestmentComponent = () => {
           
         getAllInvestments();
         window.scrollTo(0, 0);
+        function handleWindowResize() {
+          setWindowSize(getWindowSize());
+        }
+    
+        window.addEventListener('resize', handleWindowResize);
+    
+        return () => {
+          window.removeEventListener('resize', handleWindowResize);
+        };
     }
     }, [])
     
@@ -50,16 +65,16 @@ const ListInvestmentComponent = () => {
         if ( e.actual > e.capital)
         {
             return  <span className='up'>
-                    <ArrowUpward className="featuredIcon"/> 
-                    <span>{Number(((e.actual - e.capital) / e.capital) * 100).toFixed(2)} %</span>
+                    <ArrowUpward className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
+                    <span>{Number(((e.actual - e.capital) / e.capital) * 100).toFixed(2)}%</span>
                     </span>
         }   
 
         else if (e.actual < e.capital)
         {
             return   <span className='down'>
-                    <ArrowDownward className="featuredIconnegative"/> 
-                    <span>{Number(((e.actual - e.capital) / e.capital) * 100).toFixed(2)} %</span>
+                    <ArrowDownward className="featuredIconnegative" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/>
+                    <span>{Number(((e.actual - e.capital) / e.capital) * 100).toFixed(2)}%</span>
                     </span> 
         }
 
@@ -138,8 +153,8 @@ const ListInvestmentComponent = () => {
             <thead>
               <tr className="test3">
                 <th className="items"> Nom</th>
-                <th className="items"> Date de départ</th>
-                <th className="items"> Capital de départ</th>
+                <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Date de départ</th>
+                <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Capital de départ</th>
                 <th className="items"> Capital Actuel</th>
                 <th className="items"> Bénéfice</th>
                 <th className="items1"> Actions</th>
@@ -151,16 +166,16 @@ const ListInvestmentComponent = () => {
                         investment =>
                         <tr className="test1" key={investment.id}>
                             <td className="cellule"> {investment.name}</td>
-                            <td className="cellule"> {investment.start}</td>
-                            <td className="cellule"> {investment.capital.toLocaleString()} €</td>
+                            <td className="cellule"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> {investment.start}</td>
+                            <td className="cellule"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> {investment.capital.toLocaleString()} €</td>
                             <td className="cellule"> {investment.actual.toLocaleString()} €</td>
-                            <td className="cellule"> {investment.benefice.toLocaleString()} €
+                            <td className="cellulebenefice"> {investment.benefice.toLocaleString()} €
                                 {arrow1(investment)}
                             </td>
-                            <td className="celluleboutons">
-                                <Link className='btn btn-info' to={'/update/'+ investment.id}> <Fab color="info" size='small' aria-label="edit" ><EditIcon /></Fab></Link>
+                            <td className="celluleboutons" >
+                                <Link to={'/update/'+ investment.id}><Fab color="info" size='small' aria-label="edit"><EditIcon /></Fab></Link>
                                 <Link to={"/statistics/"+investment.name}><AnalyticsIcon  style={{ fontSize: 40 }} color='primary'/></Link>
-                                <button className='btn btn-danger' style = {{marginLeft : "10px", height: "40px", width:"35px"}} onClick={() => deleteinvest(investment.id, investment.name)}> X</button>
+                                <button className='btn btn-danger' style = {{marginLeft : "5px", height: "40px", width:"35px"}} onClick={() => deleteinvest(investment.id, investment.name)}>X</button>
                                 
 
                             </td>

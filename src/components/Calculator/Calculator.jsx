@@ -100,7 +100,7 @@ export const Calculator = () => {
             />
             </div>
             <div className="form-group mt-3">
-            <label>Objectif de gain mensuel ? (Si non, laissez 0)</label>
+            <label className="lastLine">Objectif de gain mensuel ? (Si non, laissez 0)</label>
             <input
               type="number"
               className="form-control mt-1"
