@@ -60,15 +60,14 @@ export const Charts = () => {
     return (
         <div className='newcontainer'>
           <h2 className='title'> Evolution du capital de l'investissement : {name}</h2>
-        <ResponsiveContainer width="90%" aspect={3}>
+        <ResponsiveContainer width="100%" aspect={2}>
         <LineChart
           width={500}
           height={300}
           data={data}
           margin={{
             top: 15,
-            right: 30,
-            left: 20,
+            right: 20,
             bottom: 5,
           }}
         >

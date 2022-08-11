@@ -7,6 +7,17 @@
   height: 340px;
 }
 
+.login{
+
+  display: flex;
+  flex-direction: column;
+}
+
+.fill{
+  height: 400px;
+  width: 100%;
+}
+
 .Auth-form-content {
   padding-left: 12%;
   padding-right: 12%;

@@ -134,14 +134,16 @@ const ListInvestmentComponent = () => {
   return (
     <div className='listcontainer'>
         <h2 className ="title"> Liste des Actifs/Passifs</h2>
-        <table className='table table-bordered table-striped'>
+        <table className='table table-bordered'>
             <thead>
+              <tr className="test3">
                 <th className="items"> Nom</th>
                 <th className="items"> Date de départ</th>
                 <th className="items"> Capital de départ</th>
                 <th className="items"> Capital Actuel</th>
                 <th className="items"> Bénéfice</th>
                 <th className="items1"> Actions</th>
+              </tr>
             </thead>
             <tbody className="test2">
                 {
@@ -158,7 +160,7 @@ const ListInvestmentComponent = () => {
                             <td className="celluleboutons">
                                 <Link className='btn btn-info' to={'/update/'+ investment.id}> <Fab color="info" size='small' aria-label="edit" ><EditIcon /></Fab></Link>
                                 <Link to={"/statistics/"+investment.name}><AnalyticsIcon  style={{ fontSize: 40 }} color='primary'/></Link>
-                                <button className='btn btn-danger' style = {{marginLeft : "10px"}} onClick={() => deleteinvest(investment.id, investment.name)}> X</button>
+                                <button className='btn btn-danger' style = {{marginLeft : "10px", height: "40px", width:"35px"}} onClick={() => deleteinvest(investment.id, investment.name)}> X</button>
                                 
 
                             </td>
@@ -170,10 +172,10 @@ const ListInvestmentComponent = () => {
         </table>
         <Link to= {"/addinvestment"} style={{width : "100%"}} className="btn btn-primary mb-2" > Ajouter</Link>
         <button style={{width : "100%"}} className="btn btn-danger" onClick={() => deleteAll()} > Tout Effacer</button>
-        
-    
-    
+    <div className='fill'></div>
     </div>
+
+    
   )
 }
 

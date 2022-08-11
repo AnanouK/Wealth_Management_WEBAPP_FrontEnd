@@ -62,15 +62,14 @@ export const ChartsGlobal = () => {
       
         <div className='newcontainer'>
           <h2 className='title'> Evolution du patrimoine total : {name}</h2>
-        <ResponsiveContainer width="90%" aspect={3}>
+        <ResponsiveContainer width="100%" aspect={3}>
         <LineChart
           width={500}
           height={300}
           data={data}
           margin={{
             top: 15,
-            right: 30,
-            left: 20,
+            right: 20,
             bottom: 5,
           }}
         >
@@ -85,21 +84,24 @@ export const ChartsGlobal = () => {
 
       <table className='table table-bordered table-striped'>
             <thead>
-                <th className="items">Date</th>
-                <th className="items">Capital</th>
-                <th className='items'>Action</th>
+              <tr>
+                <th className="itemscharts">Date</th>
+                <th className="itemscharts">Capital</th>
+                <th className='itemschartsactions'>Action</th>
+              </tr>
  
             </thead>
             <tbody className="test2">
                 {
                     reversedata.map(
                         line =>
-                        <tr className="test1" key={line.Date}>
-                            <td className="cellule"> {line.Date}</td>
-                            <td className="cellule"> {line.Capital} €</td>
-                            <td className="celluleboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
+                        <tr className="charts" key={line.Date}>
+                            <td className="cellulecharts"> {line.Date}</td>
+                            <td className="cellulecharts"> {line.Capital} €</td>
+                            <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
                         </tr>
                     )
+
                 }
             </tbody>
             

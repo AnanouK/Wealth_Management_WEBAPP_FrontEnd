@@ -1,33 +1,37 @@
-.container{
-    margin-top: 50px;
-  }
-  
   .title {
     color: white;
     margin-bottom: 40px;
   }
   
-  .items {
+  .itemscharts {
     text-align : center;
     color : white;
     }
-    .table{
+
+  .itemschartsactions{
+    text-align : center;
+    color : white;
+    }
+  .table{
     margin-top : 20px;
     font-size: 18px;
     font-weight: 600;
     border: 1px solid gray;
+    text-align: center;
     }
   
-    .test2 {
-      background-color : white;
-      }
+  .test2 {
+    background-color : white;
+  }
       
-      
-      
-      .test1{
-          text-align: center;
-      }
+  .test1{
+    text-align: center;
+  }
   
   .table{
     margin-top: 50px;
+  }
+
+  @media screen and (max-width:1000px) {
+
   }

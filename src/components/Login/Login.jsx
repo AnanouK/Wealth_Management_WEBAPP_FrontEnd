@@ -48,12 +48,21 @@ export const Login = () => {
       {
         setnom("");
         setpassword("");
-        toast.error("Identifiant ou mot de passe incorrect");
+        toast.error("Identifiant ou mot de passe incorrect", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          }); 
       }
     })
   }
 
   return (
+    <div className="login">
       <form className="Auth-form" onSubmit={(e) => submittest(e)}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Connexion</h3>
@@ -84,6 +93,8 @@ export const Login = () => {
           </div>
         </div>
       </form>
+      <div className="fill"></div>
+      </div>
   )
 }
 

@@ -1,44 +1,74 @@
 import React from "react"
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import "./Calculator.css";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios"
+import Slider from '@mui/material/Slider';
+import Button from '@mui/material/Button';
+
+
+const INGRESS_API = "34.160.0.103";
+const CALCULATOR_GETDATA = "http://" + INGRESS_API + "/calculator/";
 
 export const Calculator = () => {
 
   const [time, settime] = useState(1)
-  const [initial, setinitial] = useState("")
-  const [pourcentage, setpourcentage] = useState("")
-  const [monthly, setmonthly] = useState("")
+  const [initial, setinitial] = useState(0)
+  const [pourcentage, setpourcentage] = useState(0)
+  const [monthly, setmonthly] = useState(0)
+  const [data, setdata] = useState([])
+  const [monthlyWant, setmonthlyWant] = useState(0)
+  const [hide, sethide] = useState(true)
+
 
   const Calculate = (e) => {
     e.preventDefault();
-    console.log(time,initial,pourcentage,monthly);
+    sethide(false);
+    axios.get(CALCULATOR_GETDATA, {
+      params: {
+        time: time,
+        initial: initial,
+        pourcentage: pourcentage,
+        monthly: monthly,
+      },
+    }).then(res => {
+      setdata(res.data);
+    })
   }
 
-  toast.info("Cette section est en cours de construction.", {
-    toastId: 1,
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    });
+  useEffect(() => {
+    toast.info("Cette section est en cours de construction.", {
+      toastId: 1,
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  
+  }, [hide])
 
+  const changeheight = () => {
+    var App = document.getElementsByClassName("App");
+    var Liste = document.getElementsByClassName("listcontainer");
+    App[0].style.height = Liste.offsetHeight;
+  }
+  
   return (
+    <div className="Calculator">
       <form className="Auth-form-calculator" onSubmit={(e) => Calculate(e)}>
         <div className="Auth-form-content-calculator">
           <h3 className="Auth-form-title-calculator">Calcule des intérêts composés</h3>
           <div className="form-group mt-3">
             <label>Durée de simulation (En année) : {time}</label>
-            <input
-              type="range"
-              required
-              className="form-control mt-1"
-              placeholder="La durée souhaitée"
-              value={time} onChange = {(e) => settime(e.target.value)}
+            <Slider
+              size="small"
+              valueLabelDisplay="auto"
+              value={time}
+              onChange = {(e) => settime(e.target.value)}
             />
           </div>
           <div className="form-group mt-2">
@@ -52,7 +82,7 @@ export const Calculator = () => {
             />
           </div>
           <div className="form-group mt-3">
-            <label>Rendement</label>
+            <label>Rendement (% Annuel)</label>
             <input
               type="number"
               className="form-control mt-1"
@@ -66,18 +96,62 @@ export const Calculator = () => {
               type="number"
               className="form-control mt-1"
               placeholder="Montant de la somme investie chaque mois"
-              defaultValue={0}
               value={monthly} onChange = {(e) => setmonthly(e.target.value)}
+            />
+            </div>
+            <div className="form-group mt-3">
+            <label>Objectif de gain mensuel ? (Si non, laissez 0)</label>
+            <input
+              type="number"
+              className="form-control mt-1"
+              placeholder="Gain mensuel souhaité"
+              value={monthlyWant} onChange = {(e) => setmonthlyWant(e.target.value)}
             />
             </div>
             <br></br>
           <div className="d-grid gap-2 mt-3">
-          <button className='btn btn-primary' type="submit" > Calculer</button>
+          <Button variant="contained" type="submit" > Calculer</Button>
               
           </div>
         </div>
       </form>
+
+      <div className='listecalculator' >
+      <table className='tablecalculator'>
+          <thead>
+          <tr className="test3" hidden={hide}>
+              <th className="items"> Mois</th>
+              <th className="items"> Capital</th>
+              <th className="items"> Total Investi</th>
+              <th className="items"> Total Gagné</th>
+              <th className="items"> Gain sur le mois</th>
+
+          </tr>
+
+          </thead>
+          <tbody className="test2">
+              {
+                  data.map(
+                      list =>
+                      <tr className="test1" key={list.Mois}>
+                          <td className="cellule"> {list.Mois}</td>
+                          <td className="cellule"> {parseFloat(list.Total).toLocaleString()} €</td>
+                          <td className="cellule"> {parseFloat(list.allInvest).toLocaleString()} €</td>
+                          <td className="cellule"> {parseFloat(list.allWon).toLocaleString()} €</td>
+                          <td className={(monthlyWant != 0 && monthlyWant<=parseFloat(list.monthEarn)) ? ("celluleabove") : ("celluleearn")}> {parseFloat(list.monthEarn).toLocaleString()} €</td>
+                          
+                      </tr>
+                  )
+              }
+              
+          </tbody>
+      </table>
+    </div>
+  </div>
+  
   )
 }
+
+
 
 export default Calculator;

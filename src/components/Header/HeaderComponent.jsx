@@ -18,7 +18,7 @@ import { useUserContext } from "../../utils/UserContext";
 
 
 const HeaderComponent = () => {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
@@ -77,7 +77,7 @@ const hideonlogin = () => {
               >
                 <Tab onClick={() => navigate("/dashboard")} label="Dashboard" value={0} defaultChecked disabled={!username}/>
                 <Tab onClick={() => navigate("/investments")} label="Portefeuille" value={1} disabled={!username} />
-                <Tab onClick={() => navigate("/calculator")} label="Simulateur (En construction)" value={2} disabled={!username}/>
+                <Tab onClick={() => navigate("/calculator")} label="Calcul intèrêts composés" value={2} disabled={!username}/>
               </Tabs>
               <Button sx={{ marginLeft: "auto" }} variant="contained" onClick={connexion}>
               {titlechange()}

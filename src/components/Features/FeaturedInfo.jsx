@@ -88,7 +88,7 @@ const FeaturedInfo = () => {
         <div className="featuredMoneyContainer">
           <span className="featuredMoney" defaultValue={0}>{checkBeforeShow(alldata.benefice)} €</span>
           <span className="featuredMoneyRate" style={colorOfTheBeneficePourcentage()}>
-            {alldata.pourcentageallbenefice}%
+            {parseFloat(alldata.pourcentageallbenefice).toFixed(2)}%
             { arrow1 () }
           </span>
           

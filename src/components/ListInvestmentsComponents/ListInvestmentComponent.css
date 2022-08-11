@@ -3,11 +3,6 @@ margin-top : 0px;
 color : #111827;
 margin-bottom: 50px;
 padding-bottom: 100px;
-
-}
-
-.table{
-    background-color: #111827;
 }
 
 .items {
@@ -20,6 +15,10 @@ font-size: 18px;
 font-weight: 600;
 }
 
+.test3{
+    font-size: 17px;
+}
+
 .title{
 text-align : center;
 }
@@ -27,9 +26,7 @@ text-align : center;
 
 .items1
 {
-    width: 300px;
-    color: #111827;
-    text-align: center;
+    color: white;
 }
 
 .pourcentagebenef{
@@ -48,7 +45,7 @@ text-align : center;
 }
 
 .celluleboutons{
-    background-color: red;
+    width: 15%;
 }
 .cellule{
     margin-top: 100px;
@@ -62,3 +59,43 @@ text-align : center;
     background-color: white;
     border: none;
 }
+
+@media screen and (max-width:1400px) {
+    .test3{
+        font-size: 13px;
+    }
+    .cellule{
+        font-size: 13px;
+    }
+    span{
+        font-size: 13px;
+    }
+    .celluleboutons{
+        display: flex;
+    }
+
+  }
+
+  @media screen and (max-width:1000px) {
+    .test3{
+        font-size: 10px;
+    }
+    .cellule{
+        font-size: 10px;
+    }
+    .celluleboutons{
+        display: flex;
+    }
+    th.items1{
+        width: 20px;
+    }
+    .listcontainer{
+        width: 100%;
+    }
+
+    span{
+        font-size: 10px;
+    }
+
+
+  }

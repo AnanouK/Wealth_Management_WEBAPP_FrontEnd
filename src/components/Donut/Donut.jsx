@@ -42,28 +42,54 @@ export const Donut = () => {
         <div className="container-fluid mb-3">
                 <Chart 
                 type="donut"
-                width={500}
-                height={500}
+                width={550}
+                height={550}
                 series={capital}   
 
                 options={{
-                      noData:{text:"Pas de données"},                        
-                      labels: name, 
-                              
-                    }}
+                    noData:{text:"Pas de données"},                        
+                    labels: name,  
+                    legend: {position: "right"},
+                    responsive: [{
+                      breakpoint: 1200,
+                      options: {
+                        chart: {
+                          width: 350,
+                          height: 350,
+                        },
+                        legend: {
+                          position: 'bottom',
+                          show: false,
+                        }
+                      }
+                    }]          
+                  }}
                 >
                 </Chart>
 
                 <Chart 
                 type="pie"
-                width={500}
-                height={500}
+                width={550}
+                height={550}
                 series={capital}   
-                      
-
+                    
                  options={{
-                       noData:{text:"Pas de données"},                        
-                      labels: name,            
+                      noData:{text:"Pas de données"},                        
+                      labels: name,  
+                      legend: {position: "right"},
+                      responsive: [{
+                        breakpoint: 1200,
+                        options: {
+                          chart: {
+                            width: 350,
+                            height: 350,
+                          },
+                          legend: {
+                            position: 'bottom',
+                            show: false,
+                          }
+                        }
+                      }]          
                     }}
                 >
                 </Chart>

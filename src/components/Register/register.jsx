@@ -3,6 +3,8 @@ import { useState, useContext } from "react"
 import "./register.css";
 import {useNavigate} from 'react-router-dom'
 import axios from "axios";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Register = () => {
 
@@ -24,16 +26,37 @@ export const Register = () => {
        if(result === "Création de l'utilisateur avec success")
        {
          navigate("/");
+         toast.success("Création de votre compte effectué !", {
+          toastId: 2,
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
        }
        else 
        {
          setusername("");
+         toast.warning("Ce nom d'utilisateur est dèjà utilisé !", {
+          toastId: 1,
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
        }
     })
 
   }
 
   return (
+    <div className="register">
       <form className="Auth-form-register" onSubmit={(e) => register(e)}>
         <div className="Auth-form-content-register">
           <h3 className="Auth-form-title-register">Inscription</h3>
@@ -72,6 +95,8 @@ export const Register = () => {
           </div>
         </div>
       </form>
+    <div className="fill"></div>
+    </div>
   )
 }
 

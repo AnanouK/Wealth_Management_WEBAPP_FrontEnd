@@ -10,7 +10,6 @@
     .container-fluid.mb-3 {
      flex-direction: column;
      align-items: center;
-     width: 75%;
     }
   }
 
@@ -25,6 +24,3 @@
     padding-top: 100px;
 }
 
-.apexcharts-legend-text{
-    color: white;
-}

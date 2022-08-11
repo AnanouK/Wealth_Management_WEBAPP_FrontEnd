@@ -92,7 +92,9 @@ export const AddInvestmentComponent = () => {
     }
 
   return (
-    <div>
+
+    <div className="addorupdate">
+        <div>
         <br />
         <div className="containeraddinvest">
             <div className="row">
@@ -134,6 +136,8 @@ export const AddInvestmentComponent = () => {
             </div>
 
         </div>
+    </div>
+    <div className="fill"></div>
     </div>
   )
 }

@@ -11,7 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 
-const items = [{text :"Dashboard", clic:"/dashboard"},{text :"Portefeuille", clic:"/investments"}];
+const items = [{text :"Dashboard", clic:"/dashboard"},{text :"Portefeuille", clic:"/investments"},{text :"Calcul intèrêts", clic:"/calculator"}];
 const DrawerComp = () => {
 const [openDrawer, setOpenDrawer] = useState(false);
   
