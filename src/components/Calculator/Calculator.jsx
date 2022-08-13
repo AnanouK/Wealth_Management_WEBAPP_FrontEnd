@@ -25,37 +25,26 @@ export const Calculator = () => {
   const Calculate = (e) => {
     e.preventDefault();
     sethide(false);
-    axios.get(CALCULATOR_GETDATA, {
-      params: {
-        time: time,
-        initial: initial,
-        pourcentage: pourcentage,
-        monthly: monthly,
-      },
-    }).then(res => {
-      setdata(res.data);
-    })
+    if(pourcentage != 0 && time != 0)
+    {
+      axios.get(CALCULATOR_GETDATA, {
+        params: {
+          time: time,
+          initial: initial,
+          pourcentage: pourcentage,
+          monthly: monthly,
+          goal: monthlyWant,
+        },
+      }).then(res => {
+        setdata(res.data); 
+      })
+    }
   }
-
-  useEffect(() => {
-    toast.info("Cette section est en cours de construction.", {
-      toastId: 1,
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
   
-  }, [hide])
 
-  const changeheight = () => {
-    var App = document.getElementsByClassName("App");
-    var Liste = document.getElementsByClassName("listcontainer");
-    App[0].style.height = Liste.offsetHeight;
-  }
+  var without2Last = [...data];
+  without2Last.splice(-1);
+  without2Last.splice(-1);
   
   return (
     <div className="Calculator">
@@ -115,7 +104,17 @@ export const Calculator = () => {
           </div>
         </div>
       </form>
-
+      {
+         (monthlyWant != 0 && data.length != 0 && data[data.length - 2].Years != null ) ? (
+          <div className="goal" hidden={false}> Vous atteindrez votre objectif mensuel dans : {data[data.length - 2].Years} Année(s) et {parseInt(data[data.length - 1].Months) + 1} Mois</div>) : (null)
+        
+      }
+            {
+         (monthlyWant != 0 && data.length != 0 && data[data.length - 2].Years == null ) ? (
+          <div className="goal" hidden={false}> Votre objectif mensuel n'est pas atteint dans cette simulation</div>) : (null)
+        
+      }
+      
       <div className='listecalculator' >
       <table className='tablecalculator'>
           <thead>
@@ -131,8 +130,8 @@ export const Calculator = () => {
           </thead>
           <tbody className="test2">
               {
-                  data.map(
-                      list =>
+                  without2Last.map(
+                      list => 
                       <tr className="test1" key={list.Mois}>
                           <td className="cellule"> {list.Mois}</td>
                           <td className="cellule"> {parseFloat(list.Total).toLocaleString()} €</td>

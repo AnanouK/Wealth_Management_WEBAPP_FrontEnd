@@ -45,6 +45,19 @@
     font-weight: bold;
   }
 
+  .goal{
+    width: 50%;
+    margin-top: 50px;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: #111827;
+    border: 1px solid #8884d8;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
   @media screen and (max-width:1000px) {
     .Auth-form-calculator {
     width: 100%; 
@@ -64,6 +77,12 @@
     .lastLine
     {
       font-size: 13px;
+    }
+    .goal{
+      width: 100%;
+      margin-left: 0%;
+      margin-right: 0%;
+      font-size: 12px;
     }
   }
 
