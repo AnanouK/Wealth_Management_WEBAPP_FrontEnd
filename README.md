@@ -7,8 +7,9 @@ ________________________________________________________________________________
 Cette partie concerne le frontend de mon projet
 
 - Création d'une one page application en ReactJS
-- Les données sont récupérées via des appels d'API vers le backend
+- Les données sont récupérées via des appels d'API vers le backend Java
 - Deploiment sur kubernetes avec conteneurs docker
+- Chaque méthode possèdera son propre test unitaire (en cours)
 
 - Il s'agit d'une simple application de gestionnaire de patrimoine permettant d'afficher la totalité de son patrimoine ainsi que son évolution dans le temps
 - L'application posséde un login et un register, ainsi que plusieurs pages pour différents services
@@ -26,6 +27,11 @@ Capture d'écran de la partie Portefeuille :
 Capture d'écran de la partie statistique d'un passif/actif :
 
 ![1](https://user-images.githubusercontent.com/107629615/181916579-a3d4ec40-7c1f-4f53-abc8-c77e45a3f906.PNG)
+
+Capture d'écran de la partie "Calcul des intérêts composés" : 
+
+![1](https://user-images.githubusercontent.com/107629615/185099266-90a9b438-f53f-4207-a55d-d0736340e109.PNG)
+
 
 
 
