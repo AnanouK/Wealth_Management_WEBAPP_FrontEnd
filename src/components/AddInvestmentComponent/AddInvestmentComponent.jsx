@@ -12,27 +12,47 @@ import { useUserContext } from "../../utils/UserContext";
 
 export const AddInvestmentComponent = () => {
 
-    const {username} = useUserContext();
+    const username = localStorage.getItem('username');
     const [name, setname] = useState("")
-    const [start, setstart] = useState("")
+    const [startdate, setstartdate] = useState("")
     const [capital, setcapital] = useState(0)
     const [actual, setactual] = useState(0)
 
     const navigate = useNavigate();
     const {id} = useParams();
 
+
+    const format = (inputDate) => {
+        let date, month, year;
+      
+        date = inputDate.getDate();
+        month = inputDate.getMonth() + 1;
+        year = inputDate.getFullYear();
+      
+          date = date
+              .toString()
+              .padStart(2, '0');
+      
+          month = month
+              .toString()
+              .padStart(2, '0');
+      
+        return `${date}-${month}-${year}`;
+      }
+
     const saveInvestment = (e) => {
         e.preventDefault();
 
         if(!id){
-
+            let start = format(new Date(startdate));
             const investment = {name,start,capital,actual,username}
+            console.log(start.toLocaleString("fr-FR"));
             InvestmentService.saveInvestment(investment,username);  
             setTimeout(() => navigate("/investments"), 500);    
         }
 
         else {
-
+            let start = format(new Date(startdate));
             const newinvestment = {name,start,capital,actual,username};
             InvestmentService.updateInvestment(newinvestment,id,username);
             setTimeout(() => navigate("/investments"), 500); 
@@ -57,7 +77,7 @@ export const AddInvestmentComponent = () => {
             },
           }).then(res => {
             setname(res.data.name);
-            setstart(res.data.start);
+            setstartdate(res.data.start);
             setcapital(res.data.capital);
             setactual(res.data.actual);
         });
@@ -91,6 +111,7 @@ export const AddInvestmentComponent = () => {
         else return "Date de départ";
     }
 
+
   return (
 
     <div className="addorupdate">
@@ -109,7 +130,7 @@ export const AddInvestmentComponent = () => {
                             </div>
                             <div className="form-group mb-2">
                                 <label className="form-label"> {datechange()} : </label>
-                                <input type="date" placeholder="07/08/2021" name="start" className="form-control" value={start} onChange = {(e) => setstart(e.target.value)} />
+                                <input type="date" placeholder="07/08/2021" name="start" className="form-control" value={startdate} onChange = {(e) => setstartdate(e.target.value)} />
                             </div>
                             <div className="form-group mb-2">
                                 <label className="form-label"> Capital de départ : </label>
