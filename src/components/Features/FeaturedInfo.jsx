@@ -8,7 +8,7 @@ import { useUserContext } from "../../utils/UserContext";
 const FeaturedInfo = () => {
 
     const navigate = useNavigate();
-    const {username} = useUserContext();
+    const username = localStorage.getItem('username');
 
     const INVESTMENT_ALL = "http://34.160.0.103/investments/alldata";
 

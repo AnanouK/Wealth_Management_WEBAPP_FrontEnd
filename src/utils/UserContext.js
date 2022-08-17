@@ -15,6 +15,7 @@ export function UserContextProvider({ children }) {
     }
     function logOut() {
         setUsername(null);
+        localStorage.removeItem('username');
     }
     return (
         <userContext.Provider value={{username, logIn, logOut}}>

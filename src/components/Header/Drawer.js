@@ -1,4 +1,5 @@
-import React, { useState, useNavigate } from "react";
+import React, { useState } from "react";
+import './Drawer.css';
 import {
   Drawer,
   IconButton,
@@ -6,15 +7,37 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserContext } from "../../utils/UserContext";
 
 
 const items = [{text :"Dashboard", clic:"/dashboard"},{text :"Portefeuille", clic:"/investments"},{text :"Calcul intèrêts", clic:"/calculator"}];
 const DrawerComp = () => {
 const [openDrawer, setOpenDrawer] = useState(false);
-  
+const username = localStorage.getItem('username');
+const { logOut } = useUserContext();
+const navigate = useNavigate();
+
+const connexion = () => {
+
+  if(username)
+  {
+    logOut();
+  }
+  navigate("/");
+}
+
+const titlechange = () => {
+  if(username)
+  {
+      return "Deconnexion";
+  }
+
+  else return "Connexion";
+}
 
   return (
     <React.Fragment>
@@ -22,19 +45,23 @@ const [openDrawer, setOpenDrawer] = useState(false);
         anchor="right"
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
-        color="black"
       >
-        <List>
+        <List         
+        sx={{
+          bgcolor: '#111827',
+          height: "100%",
+        }}>
           <div className="list">
           {items.map((items, index) => (
-            <ListItemButton key={index}>
+            <ListItemButton key={index} sx={{ borderBottom:" 1px solid #1976D2" }}>
               <ListItemIcon>
-                <ListItemText><Link to={items.clic}>{items.text}</Link></ListItemText>
+                <ListItemText sx={{color: "white",}}><Link className="itemsMobileHeader" to={items.clic}>{items.text}</Link></ListItemText>
               </ListItemIcon>
             </ListItemButton>
           ))}
           </div>
         </List>
+        <Button sx={{ width:"100%", borderRadius:"1px" }} variant="contained" onClick={connexion} >{titlechange()}</Button>
       </Drawer>
       <IconButton
         sx={{ color: "white", marginLeft: "auto" }}

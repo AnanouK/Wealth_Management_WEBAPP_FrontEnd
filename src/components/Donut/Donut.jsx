@@ -7,7 +7,7 @@ import "./Donut.css"
 
 export const Donut = () => {
 
-    const {username} = useUserContext();
+    const username = localStorage.getItem('username');
     const [alldata, setalldata] = useState([]);
 
     const INGRESS_API = "34.160.0.103";

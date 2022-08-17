@@ -1,7 +1,6 @@
 import React , {useState, useEffect} from 'react'
 import { Link, useNavigate} from 'react-router-dom'
 import "./ListInvestmentComponent.css"
-import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import Fab from '@mui/material/Fab';
@@ -9,12 +8,13 @@ import AnalyticsIcon from '@mui/icons-material/Analytics';
 import { useUserContext } from '../../utils/UserContext';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
 
 
 
 const ListInvestmentComponent = () => {
 
-    const {username} = useUserContext();
+    const username = localStorage.getItem('username');
     const [investments, setinvestments] = useState([])
     const [windowSize, setWindowSize] = useState(getWindowSize());
 
@@ -65,7 +65,7 @@ const ListInvestmentComponent = () => {
         if ( e.actual > e.capital)
         {
             return  <span className='up'>
-                    <ArrowUpward className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
+                    <ArrowDropUp className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
                     <span>{Number(((e.actual - e.capital) / e.capital) * 100).toFixed(2)}%</span>
                     </span>
         }   
@@ -73,7 +73,7 @@ const ListInvestmentComponent = () => {
         else if (e.actual < e.capital)
         {
             return   <span className='down'>
-                    <ArrowDownward className="featuredIconnegative" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/>
+                    <ArrowDropDown className="featuredIconnegative" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/>
                     <span>{Number(((e.actual - e.capital) / e.capital) * 100).toFixed(2)}%</span>
                     </span> 
         }
@@ -105,6 +105,7 @@ const ListInvestmentComponent = () => {
                 var today = new Date();
                 var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
                 var global = {name:"global",start:date,capital:0,actual:actual,username:username};
+                setTimeout(getAllInvestments(),1000);
               });
             
               toast.success("Supprimé avec succès", {
@@ -116,8 +117,6 @@ const ListInvestmentComponent = () => {
                 draggable: true,
                 progress: undefined,
                 });
-                 
-            setTimeout(getAllInvestments(),1500);
 
         }
     }
@@ -143,7 +142,7 @@ const ListInvestmentComponent = () => {
         var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
         var global = {name:"global",start:date,capital:0,actual:actual,username:username};
       });
-      setTimeout(getAllInvestments(),1500);
+      setTimeout(getAllInvestments(),2000);
     }
 
   return (
@@ -152,8 +151,8 @@ const ListInvestmentComponent = () => {
         <table className='table table-bordered'>
             <thead>
               <tr className="test3">
-                <th className="items"> Nom</th>
-                <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Date de départ</th>
+                <th className="itemsName"> Nom</th>
+                <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Date dernière modification</th>
                 <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Capital de départ</th>
                 <th className="items"> Capital Actuel</th>
                 <th className="items"> Bénéfice</th>
@@ -170,7 +169,7 @@ const ListInvestmentComponent = () => {
                             <td className="cellule"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> {investment.capital.toLocaleString()} €</td>
                             <td className="cellule"> {investment.actual.toLocaleString()} €</td>
                             <td className="cellulebenefice"> {investment.benefice.toLocaleString()} €
-                                {arrow1(investment)}
+                                <span>{arrow1(investment)}</span>
                             </td>
                             <td className="celluleboutons" >
                                 <Link to={'/update/'+ investment.id}><Fab color="info" size='small' aria-label="edit"><EditIcon /></Fab></Link>

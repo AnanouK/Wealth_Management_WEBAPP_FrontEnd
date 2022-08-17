@@ -6,6 +6,9 @@ import { useState, useEffect} from "react"
 import { useUserContext } from '../../utils/UserContext';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
+
+
 
 
 export const ChartsGlobal = () => {
@@ -13,9 +16,10 @@ export const ChartsGlobal = () => {
   const name = "global";
   const [data, setdata] = useState([]);
 
-  const {username} = useUserContext();
+  const username = localStorage.getItem('username');
   const INGRESS_API = "34.160.0.103";
   const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof";
+  const CHECKFOREMPTY = "http://" + INGRESS_API + "/statistics/checkempty";
   const DELETEONE = "http://" + INGRESS_API + "/statistics/delete/onestat";
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
@@ -26,7 +30,7 @@ export const ChartsGlobal = () => {
   }
 
   useEffect(() => {
-    getdata();
+    getData();
     window.scrollTo(0, 0);
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -40,25 +44,32 @@ export const ChartsGlobal = () => {
 
   }, [])
 
-  const getdata = () =>{
-    axios.get(STATISTICSDATA, {
+  const getData = () =>{
+    axios.get(CHECKFOREMPTY, {
       params: {
-        investmentName: name,
-        clientUsername : username,
+        username : username,
+        name : "global",
       },
-    }).then(res =>{
-      setdata(res.data);
-     
-    })}
+    }).then(() => {
+      axios.get(STATISTICSDATA, {
+        params: {
+          investmentName: name,
+          clientUsername : username,
+        },
+      }).then(res =>{
+        setdata(res.data);
+       
+      })})
+    }
 
-    const deleteone = (Id) =>
+    const deleteOne = (Id) =>
     {
       axios.delete(DELETEONE, {
         params: {
           id: Id,
         },
       }).then(() =>{
-        setTimeout(getdata(),1000);
+        setTimeout(getData(),1000);
         toast.success("Supprimé avec succès !", {
           position: "top-right",
           autoClose: 5000,
@@ -70,6 +81,27 @@ export const ChartsGlobal = () => {
           }); 
       })}
 
+      const arrow = (e) => {
+
+        if ( e > 0 && e != 100.000)
+        {
+            return  <span className='up'>
+                    <ArrowDropUp className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
+                    <span className='pourcentageGlobalChart'>{e.toFixed(3)}%</span>
+                    </span>
+        }   
+        
+
+        else if (e < 0)
+        {
+            return   <span className='down'>
+                    <ArrowDropDown className="featuredIconnegative" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/>
+                    <span>{e.toFixed(3)}%</span>
+                    </span> 
+        }
+
+        }
+
       var reversedata = [...data].reverse();
       
 
@@ -77,7 +109,7 @@ export const ChartsGlobal = () => {
       
         <div className='newcontainer'>
           <h2 className='title'> Evolution du patrimoine total : {name}</h2>
-        <ResponsiveContainer width="95%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
+        <ResponsiveContainer width="90%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
         <LineChart
           width={500}
           height={300}
@@ -112,8 +144,8 @@ export const ChartsGlobal = () => {
                         line =>
                         <tr className="charts" key={line.Date}>
                             <td className="cellulecharts"> {line.Date}</td>
-                            <td className="cellulecharts"> {line.Capital} €</td>
-                            <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
+                            <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>
+                            <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteOne(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
                         </tr>
                     )
 

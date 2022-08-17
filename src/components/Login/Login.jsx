@@ -17,6 +17,11 @@ export const Login = () => {
   const INGRESS_API = "34.160.0.103";
   const LOGIN_BASE_API_URL = "http://" + INGRESS_API + "/users/";
 
+  if(localStorage.getItem('username') != null)
+  {
+    navigate("/dashboard");
+  }
+
   const submittest = (e) => {
     var result = "";
     e.preventDefault();
@@ -28,7 +33,7 @@ export const Login = () => {
     }).then(res => {
       result = res.data;
       if (result === "success") {
-        logIn(nom); 
+        localStorage.setItem('username',nom); 
         navigate("/dashboard");
         if(nom === "demo1")
         {
@@ -89,7 +94,7 @@ export const Login = () => {
           <button className='btn btn-primary' type="submit" > Valider</button>
           </div>
           <div className="createaccount">
-            <Link to="/register"><p> Vous n'avez pas encore de compte ? Cliquez ici</p></Link>
+            <Link className="createAccountLink" to="/register"><p> Vous n'avez pas encore de compte ? Cliquez ici</p></Link>
           </div>
         </div>
       </form>

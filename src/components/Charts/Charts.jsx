@@ -6,6 +6,8 @@ import { useState, useEffect} from "react"
 import { useUserContext } from '../../utils/UserContext';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
+
 
 
 export const Charts = () => {
@@ -13,9 +15,10 @@ export const Charts = () => {
   const {name} = useParams();
   const [data, setdata] = useState([]);
 
-  const {username} = useUserContext();
+  const username = localStorage.getItem('username');
   const INGRESS_API = "34.160.0.103";
   const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof";
+  const CHECKFOREMPTY = "http://" + INGRESS_API + "/statistics/checkempty";
   const DELETEONE = "http://" + INGRESS_API + "/statistics/delete/onestat";
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
@@ -28,7 +31,7 @@ export const Charts = () => {
   
 
   useEffect(() => {
-    getdata();
+    getData();
     window.scrollTo(0, 0);
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -43,15 +46,23 @@ export const Charts = () => {
 
   }, [])
 
-  const getdata = () =>{
-    axios.get(STATISTICSDATA, {
+  const getData = () =>{
+    axios.get(CHECKFOREMPTY, {
       params: {
-        investmentName: name,
-        clientUsername : username,
+        username : username,
+        name : name,
       },
-    }).then(res =>{
-      setdata(res.data);
-    })}
+    }).then(() => {
+      axios.get(STATISTICSDATA, {
+        params: {
+          investmentName: name,
+          clientUsername : username,
+        },
+      }).then(res =>{
+        setdata(res.data);
+       
+      })})
+    }
 
     const deleteone = (Id) =>
     {
@@ -60,7 +71,7 @@ export const Charts = () => {
           id: Id,
         },
       }).then(res =>{
-        setTimeout(getdata(),1000);
+        setTimeout(getData(),1000);
         toast.success("Supprimé avec succès !", {
           position: "top-right",
           autoClose: 5000,
@@ -71,6 +82,27 @@ export const Charts = () => {
           progress: undefined,
           }); 
       })}
+
+      const arrow = (e) => {
+        
+        if ( e > 0 && e != 100.000)
+        {
+            return  <span className='up'>
+                    <ArrowDropUp className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
+                    <span className='pourcentageGlobalChart'>{e.toFixed(3)}%</span>
+                    </span>
+        }   
+        
+
+        else if (e < 0)
+        {
+            return   <span className='down'>
+                    <ArrowDropDown className="featuredIconnegative" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/>
+                    <span>{e.toFixed(3)}%</span>
+                    </span> 
+        }
+
+        }
 
       var reversedata = [...data].reverse();
 
@@ -108,7 +140,7 @@ export const Charts = () => {
                         line =>
                         <tr className="test1" key={line.Date}>
                             <td className="cellulecharts"> {line.Date}</td>
-                            <td className="cellulecharts"> {line.Capital} €</td>
+                            <td className="cellulecharts"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>
                             <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
                         </tr>
                     )

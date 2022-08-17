@@ -23,7 +23,7 @@ const HeaderComponent = () => {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
   
-  const {username} = useUserContext();
+  const username = localStorage.getItem('username');
   const { logOut } = useUserContext();
 
   const titlechange = () => {
@@ -35,14 +35,6 @@ const HeaderComponent = () => {
     else return "Connexion";
 }
 
-const hideonlogin = () => {
-  if(!username)
-  {
-      return ;
-  }
-
-  else return "Connexion";
-}
 
   const connexion = () => {
 
