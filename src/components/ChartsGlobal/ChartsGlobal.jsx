@@ -119,7 +119,7 @@ export const ChartsGlobal = () => {
             left: 10,
           }}
         >
-          <CartesianGrid  horizontal="true" vertical="" stroke="#243240"/>
+          <CartesianGrid  horizontal="true" vertical="" stroke="#243240" strokeDasharray="3 3"/>
           <XAxis dataKey="Date" tick={{fill:"#fff"}} padding={{right: 0}}  hide={windowSize.innerWidth<= 1000 ? (true) : (false)} />
           <YAxis tickFormatter={str => str.toLocaleString()} tick={{fill:"#fff"}} unit={"€"} domain={['dataMin', 'dataMax']} padding={{bottom: 10}} axisLine={false} tickLine={false} tickCount={7}/>
           <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false} />

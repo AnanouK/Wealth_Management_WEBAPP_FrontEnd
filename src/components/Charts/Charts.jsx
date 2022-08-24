@@ -119,7 +119,7 @@ export const Charts = () => {
             bottom: 5,
           }}
         >
-          <CartesianGrid  horizontal="true" vertical="" stroke="#243240"/>
+          <CartesianGrid  horizontal="true" vertical="" stroke="#243240" strokeDasharray="3 3"/>
           <XAxis dataKey="Date" tick={{fill:"#fff"}} name="Date" allowDuplicatedCategory="false" hide={windowSize.innerWidth<= 1000 ? (true) : (false)} />
           <YAxis tick={{fill:"#fff"}} unit={"€"} name="Capital" padding={{bottom: 10}} domain={['dataMin', 'dataMax']} />
           <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false}/>
