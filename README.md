@@ -2,7 +2,7 @@
 
 LIEN DE LA DEMO : http://34.160.0.103 (Identifiant et mot de passe déjà présents)
 
-- Création d'une one page application en ReactJS.
+- Création d'une one page application responsive en ReactJS.
 - Les données sont récupérées via des appels d'API vers le backend Java.
 - Deploiment sur kubernetes avec conteneurs docker.
 - Chaque méthode possèdera son propre test unitaire via JEST (en cours).
