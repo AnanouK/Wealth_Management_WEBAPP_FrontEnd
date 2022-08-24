@@ -1,12 +1,12 @@
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area } from 'recharts';
 import "./ChartsGlobal.css";
 import axios from "axios";
-import { useState, useEffect} from "react"
-import { useUserContext } from '../../utils/UserContext';
+import { useState, useEffect} from "react";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
+import { AreaChart } from 'recharts';
 
 
 
@@ -109,11 +109,9 @@ export const ChartsGlobal = () => {
       
         <div className='newcontainer'>
           <h2 className='title'> Evolution du patrimoine total : {name}</h2>
-        <ResponsiveContainer width="90%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
-        <LineChart
-          width={500}
-          height={300}
-          data={data}
+        <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
+        <AreaChart
+          data={data.filter(entry => entry.Pourcentage !== 0)}
           margin={{
             top: 15,
             right: 20,
@@ -121,12 +119,12 @@ export const ChartsGlobal = () => {
           }}
         >
           <CartesianGrid  horizontal="true" vertical="" stroke="#243240"/>
-          <XAxis dataKey="Date" tick={{fill:"#fff"}}/>
-          <YAxis tick={{fill:"#fff"}} />
+          <XAxis dataKey="Date" tick={{fill:"#fff"}} padding={{right: 0}}/>
+          <YAxis tick={{fill:"#fff"}} unit={"€"} domain={['dataMin', 'dataMax']} padding={{bottom: 20}}/>
           <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false}/>
-          <Line type="monotone" dataKey="Capital" stroke="#8884d8" strokeWidth="5" dot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 2,r:5}} activeDot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 5,r:10}} />
+          <Area type="monotone" dataKey="Capital" fill='#8884d8' stroke="#8884d8" strokeWidth="5" dot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 2,r:5}} activeDot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 5,r:10}} />
           
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
 
       <table className='table table-bordered table-striped'>
@@ -141,12 +139,13 @@ export const ChartsGlobal = () => {
             <tbody className="test2">
                 {
                     reversedata.map(
-                        line =>
-                        <tr className="charts" key={line.Date}>
-                            <td className="cellulecharts"> {line.Date}</td>
-                            <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>
-                            <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteOne(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
-                        </tr>
+                        line => line.Pourcentage !== 0? (
+                              <tr className="charts" key={line.Date}>
+                                  <td className="cellulecharts"> {line.Date}</td>
+                                  <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>
+                                  <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteOne(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
+                              </tr>)
+                              : null
                     )
 
                 }

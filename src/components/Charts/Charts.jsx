@@ -7,6 +7,7 @@ import { useUserContext } from '../../utils/UserContext';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
+import { AreaChart, Area } from 'recharts';
 
 
 
@@ -109,9 +110,9 @@ export const Charts = () => {
     return (
         <div className='newcontainer'>
           <h2 className='title'> Evolution du capital de l'investissement : {name}</h2>
-        <ResponsiveContainer width="95%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
-        <LineChart
-          data={data}
+        <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
+        <AreaChart
+          data={data.filter(entry => entry.Pourcentage !== 0)}
           margin={{
             top: 15,
             right: 50,
@@ -119,12 +120,12 @@ export const Charts = () => {
           }}
         >
           <CartesianGrid  horizontal="true" vertical="" stroke="#243240"/>
-          <XAxis dataKey="Date" tick={{fill:"#fff"}}/>
-          <YAxis tick={{fill:"#fff"}} />
+          <XAxis dataKey="Date" tick={{fill:"#fff"}} name="Date" allowDuplicatedCategory="false" interval="preserveEnd" />
+          <YAxis tick={{fill:"#fff"}} unit={"€"} name="Capital" padding={{bottom: 10}} domain={['dataMin', 'dataMax']} />
           <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false}/>
-          <Line type="monotone" dataKey="Capital" stroke="#8884d8" strokeWidth="5" dot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 2,r:5}} activeDot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 5,r:10}} />
+          <Area type="monotone" dataKey="Capital" fill='#8884d8' stroke="#8884d8" strokeWidth="5" dot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 2,r:5}} activeDot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 5,r:10}} />
           
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
 
       <table className='table table-bordered'>
@@ -137,12 +138,13 @@ export const Charts = () => {
             <tbody className="test2">
                 {
                     reversedata.map(
-                        line =>
-                        <tr className="test1" key={line.Date}>
+                      line => line.Pourcentage !== 0? (
+                        <tr className="charts" key={line.Date}>
                             <td className="cellulecharts"> {line.Date}</td>
-                            <td className="cellulecharts"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>
+                            <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>
                             <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
-                        </tr>
+                        </tr>)
+                        : null
                     )
                 }
             </tbody>
