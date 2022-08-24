@@ -120,7 +120,7 @@ export const Charts = () => {
           }}
         >
           <CartesianGrid  horizontal="true" vertical="" stroke="#243240"/>
-          <XAxis dataKey="Date" tick={{fill:"#fff"}} name="Date" allowDuplicatedCategory="false" interval="preserveEnd" />
+          <XAxis dataKey="Date" tick={{fill:"#fff"}} name="Date" allowDuplicatedCategory="false" hide={windowSize.innerWidth<= 1000 ? (true) : (false)} />
           <YAxis tick={{fill:"#fff"}} unit={"€"} name="Capital" padding={{bottom: 10}} domain={['dataMin', 'dataMax']} />
           <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false}/>
           <Area type="monotone" dataKey="Capital" fill='#8884d8' stroke="#8884d8" strokeWidth="5" dot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 2,r:5}} activeDot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 5,r:10}} />

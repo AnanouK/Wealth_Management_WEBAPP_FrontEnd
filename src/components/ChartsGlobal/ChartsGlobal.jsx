@@ -116,12 +116,13 @@ export const ChartsGlobal = () => {
             top: 15,
             right: 20,
             bottom: 5,
+            left: 10,
           }}
         >
           <CartesianGrid  horizontal="true" vertical="" stroke="#243240"/>
-          <XAxis dataKey="Date" tick={{fill:"#fff"}} padding={{right: 0}}/>
-          <YAxis tick={{fill:"#fff"}} unit={"€"} domain={['dataMin', 'dataMax']} padding={{bottom: 20}}/>
-          <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false}/>
+          <XAxis dataKey="Date" tick={{fill:"#fff"}} padding={{right: 0}}  hide={windowSize.innerWidth<= 1000 ? (true) : (false)} />
+          <YAxis tickFormatter={str => str.toLocaleString()} tick={{fill:"#fff"}} unit={"€"} domain={['dataMin', 'dataMax']} padding={{bottom: 10}} axisLine={false} tickLine={false} tickCount={7}/>
+          <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false} />
           <Area type="monotone" dataKey="Capital" fill='#8884d8' stroke="#8884d8" strokeWidth="5" dot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 2,r:5}} activeDot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 5,r:10}} />
           
         </AreaChart>
