@@ -108,7 +108,7 @@ export const ChartsGlobal = () => {
     return (
       
         <div className='newcontainer'>
-          <h2 className='title'> Evolution du patrimoine total : {name}</h2>
+          <h2 className='title'> Evolution du patrimoine total</h2>
         <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
         <AreaChart
           data={data.filter(entry => entry.Pourcentage !== 0)}
