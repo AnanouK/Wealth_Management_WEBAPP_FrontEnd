@@ -1,5 +1,5 @@
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area } from 'recharts';
+import {XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area } from 'recharts';
 import "./ChartsGlobal.css";
 import axios from "axios";
 import { useState, useEffect} from "react";
@@ -83,7 +83,7 @@ export const ChartsGlobal = () => {
 
       const arrow = (e) => {
 
-        if ( e > 0 && e != 100.000)
+        if ( e > 0 && e !== 100.000)
         {
             return  <span className='up'>
                     <ArrowDropUp className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
@@ -116,7 +116,7 @@ export const ChartsGlobal = () => {
             top: 15,
             right: 12,
             bottom: 5,
-            left: 10,
+            left: 20,
           }}
         >
           <CartesianGrid  horizontal="true" vertical="" stroke="#243240" strokeDasharray="3 3"/>

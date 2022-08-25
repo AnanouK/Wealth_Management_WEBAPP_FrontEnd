@@ -17,7 +17,7 @@ class InvestmentService {
 
     saveInvestment(investment, username){
         axios.post(INVESTMENT_ADD_INVESTMENT_SERVICE, investment).then(response => {
-            if(response.status === 405)
+            if(response.status >= 400)
             {
               toast.error("Nous rencontrons une erreur :(, merci de réessayer plus tard !", {
                 position: "top-right",
@@ -63,29 +63,45 @@ class InvestmentService {
             params: {
               id: id,
             },
-          });
-        axios.post(INVESTMENT_ADD_STATISTICS_SERVICE, investment);
-        axios.get(INVESTMENT_GETACTUAL, {
-          params: {
-            username: username,
-          },
-        }).then(response => {
-          var actual = response.data;
-          var today = new Date();
-          var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-          var global = {name:"global",start:date,capital:0,actual:actual,username:username};
-          axios.post(INVESTMENT_ADD_STATISTICS_SERVICE,global);
-        });
+          }).then(response => {
 
-        toast.success("Votre investissement est modifié !", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          }); 
+        if(response.status >= 400)
+        {
+          toast.error("Nous rencontrons une erreur :(, merci de réessayer plus tard !", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            }); 
+        }
+        else {
+            axios.post(INVESTMENT_ADD_STATISTICS_SERVICE, investment);
+            axios.get(INVESTMENT_GETACTUAL, {
+              params: {
+                username: username,
+              },
+            }).then(response => {
+              var actual = response.data;
+              var today = new Date();
+              var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+              var global = {name:"global",start:date,capital:0,actual:actual,username:username};
+              axios.post(INVESTMENT_ADD_STATISTICS_SERVICE,global);
+            });
+    
+            toast.success("Votre investissement est modifié !", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              }); 
+          }
+      });
     }
 
     getInvestmentById(investmentId)

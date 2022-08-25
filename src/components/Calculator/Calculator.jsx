@@ -1,7 +1,6 @@
 import React from "react"
-import { useState, useEffect} from "react"
+import { useState} from "react"
 import "./Calculator.css";
-import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
 import Slider from '@mui/material/Slider';
@@ -25,7 +24,7 @@ export const Calculator = () => {
   const Calculate = (e) => {
     e.preventDefault();
     sethide(false);
-    if(pourcentage != 0 && time != 0)
+    if(pourcentage !== 0 && time !== 0)
     {
       axios.get(CALCULATOR_GETDATA, {
         params: {
@@ -105,12 +104,12 @@ export const Calculator = () => {
         </div>
       </form>
       {
-         (monthlyWant != 0 && data.length != 0 && data[data.length - 2].Years != null ) ? (
+         (monthlyWant !== 0 && data.length !== 0 && data[data.length - 2].Years !==null ) ? (
           <div className="goal" hidden={false}> Vous atteindrez votre objectif mensuel dans : {data[data.length - 2].Years} Année(s) et {parseInt(data[data.length - 1].Months) + 1} Mois</div>) : (null)
         
       }
             {
-         (monthlyWant != 0 && data.length != 0 && data[data.length - 2].Years == null ) ? (
+         (monthlyWant !== 0 && data.length !== 0 && data[data.length - 2].Years == null ) ? (
           <div className="goal" hidden={false}> Votre objectif mensuel n'est pas atteint dans cette simulation</div>) : (null)
         
       }
@@ -137,7 +136,7 @@ export const Calculator = () => {
                           <td className="cellule"> {parseFloat(list.Total).toLocaleString()} €</td>
                           <td className="cellule"> {parseFloat(list.allInvest).toLocaleString()} €</td>
                           <td className="cellule"> {parseFloat(list.allWon).toLocaleString()} €</td>
-                          <td className={(monthlyWant != 0 && monthlyWant<=parseFloat(list.monthEarn)) ? ("celluleabove") : ("celluleearn")}> {parseFloat(list.monthEarn).toLocaleString()} €</td>
+                          <td className={(monthlyWant !== 0 && monthlyWant<=parseFloat(list.monthEarn)) ? ("celluleabove") : ("celluleearn")}> {parseFloat(list.monthEarn).toLocaleString()} €</td>
                           
                       </tr>
                   )

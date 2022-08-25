@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import {
   AppBar,
   Button,
@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import AutoGraphIcon from '@mui/icons-material/AutoGraph';
 import DrawerComp from "./Drawer";
-import { UserContext } from "../../utils/UserContext";
 import { useUserContext } from "../../utils/UserContext";
 
 

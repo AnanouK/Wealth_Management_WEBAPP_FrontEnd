@@ -8,7 +8,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import "./AddInvestmentComponent.css"
 import { useEffect } from "react";
 import axios from "axios";
-import { useUserContext } from "../../utils/UserContext";
 
 export const AddInvestmentComponent = () => {
 
@@ -46,16 +45,15 @@ export const AddInvestmentComponent = () => {
         if(!id){
             let start = format(new Date(startdate));
             const investment = {name,start,capital,actual,username}
-            console.log(start.toLocaleString("fr-FR"));
             InvestmentService.saveInvestment(investment,username);  
-            setTimeout(() => navigate("/investments"), 500);    
+            setTimeout(() => navigate("/investments"), 1000);    
         }
 
         else {
             let start = format(new Date(startdate));
             const newinvestment = {name,start,capital,actual,username};
             InvestmentService.updateInvestment(newinvestment,id,username);
-            setTimeout(() => navigate("/investments"), 500); 
+            setTimeout(() => navigate("/investments"), 1000); 
         }
 
 

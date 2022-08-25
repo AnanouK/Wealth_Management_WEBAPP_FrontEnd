@@ -1,9 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import {XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import "./Charts.css";
 import axios from "axios";
 import { useState, useEffect} from "react"
-import { useUserContext } from '../../utils/UserContext';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
@@ -86,7 +85,7 @@ export const Charts = () => {
 
       const arrow = (e) => {
         
-        if ( e > 0 && e != 100.000)
+        if ( e > 0 && e !== 100.000)
         {
             return  <span className='up'>
                     <ArrowDropUp className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
@@ -117,7 +116,7 @@ export const Charts = () => {
             top: 15,
             right: 12,
             bottom: 5,
-            left: 10,
+            left: 20,
           }}
         >
           <CartesianGrid  horizontal="true" vertical="" stroke="#243240" strokeDasharray="3 3"/>

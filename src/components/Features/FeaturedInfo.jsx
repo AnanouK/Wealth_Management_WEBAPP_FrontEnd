@@ -2,8 +2,7 @@ import "./FeaturedInfo.scss";
 import { ArrowDownward, ArrowUpward } from "@mui/icons-material";
 import React , {useState, useEffect} from 'react'
 import axios from "axios";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom"
-import { useUserContext } from "../../utils/UserContext";
+import {useNavigate} from "react-router-dom"
 
 const FeaturedInfo = () => {
 
@@ -33,12 +32,12 @@ const FeaturedInfo = () => {
 
     const arrow1 = () => {
 
-      if ( alldata.actual >= alldata.base && alldata.actual != undefined)
+      if ( alldata.actual >= alldata.base && alldata.actual !== undefined)
       {
           return  <ArrowUpward className="featuredIcon"/>;
       }
 
-      else if (alldata.actual == undefined) return
+      else if (alldata.actual === undefined) return
 
       else return  <ArrowDownward className="featuredIconnegative"/>
     }

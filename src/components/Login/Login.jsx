@@ -2,7 +2,6 @@ import React from "react"
 import { useState } from "react"
 import "./Login.css";
 import { Link, useNavigate} from 'react-router-dom'
-import {  useUserContext } from "../../utils/UserContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,11 +12,10 @@ export const Login = () => {
   const [password, setpassword] = useState("demo1")
 
   const navigate = useNavigate();
-  const { logIn } = useUserContext();
   const INGRESS_API = "34.160.0.103";
   const LOGIN_BASE_API_URL = "http://" + INGRESS_API + "/users/";
 
-  if(localStorage.getItem('username') != null)
+  if(localStorage.getItem('username') !== null)
   {
     navigate("/dashboard");
   }
