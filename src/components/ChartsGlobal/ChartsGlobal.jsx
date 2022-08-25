@@ -114,7 +114,7 @@ export const ChartsGlobal = () => {
           data={data.filter(entry => entry.Pourcentage !== 0)}
           margin={{
             top: 15,
-            right: 20,
+            right: 12,
             bottom: 5,
             left: 10,
           }}

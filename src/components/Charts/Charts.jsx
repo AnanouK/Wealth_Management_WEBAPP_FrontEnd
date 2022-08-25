@@ -115,8 +115,9 @@ export const Charts = () => {
           data={data.filter(entry => entry.Pourcentage !== 0)}
           margin={{
             top: 15,
-            right: 50,
+            right: 12,
             bottom: 5,
+            left: 10,
           }}
         >
           <CartesianGrid  horizontal="true" vertical="" stroke="#243240" strokeDasharray="3 3"/>
