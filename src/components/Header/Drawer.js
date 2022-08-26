@@ -28,6 +28,11 @@ const connexion = () => {
     logOut();
   }
   navigate("/");
+  setOpenDrawer(false);
+}
+
+const setOpenDrawerToFalse = () => {
+  setOpenDrawer(false);
 }
 
 const titlechange = () => {
@@ -44,7 +49,6 @@ const titlechange = () => {
       <Drawer
         anchor="right"
         open={openDrawer}
-        onClose={() => setOpenDrawer(false)}
       >
         <List         
         sx={{
@@ -55,7 +59,7 @@ const titlechange = () => {
           {items.map((items, index) => (
             <ListItemButton key={index} sx={{ borderBottom:" 1px solid #1976D2" }}>
               <ListItemIcon>
-                <ListItemText sx={{color: "white",}}><Link className="itemsMobileHeader" to={items.clic}>{items.text}</Link></ListItemText>
+                <ListItemText sx={{color: "white"}}><Link className="itemsMobileHeader" onClick={() => setOpenDrawer(!openDrawer)}  to={items.clic}>{items.text}</Link></ListItemText>
               </ListItemIcon>
             </ListItemButton>
           ))}
