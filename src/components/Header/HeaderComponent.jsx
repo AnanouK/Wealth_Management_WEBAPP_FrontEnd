@@ -51,8 +51,8 @@ const HeaderComponent = () => {
           <AutoGraphIcon sx={{ transform: "scale(2)" }} />
           {isMatch ? (
             <>
-              <Typography sx={{ fontSize: "1.5rem", paddingLeft: "10%" }}>
-                Patrimoine Tracker
+              <Typography sx={{ fontSize: "1.2rem", paddingLeft: "10%" }}>
+                Gestionnaire de patrimoine
               </Typography>
               <DrawerComp />
             </>
@@ -66,7 +66,7 @@ const HeaderComponent = () => {
                 onChange={(e, value) => setValue(value)}
                 
               >
-                <Tab onClick={() => navigate("/dashboard")} label="Dashboard" value={0} defaultChecked disabled={!username}/>
+                <Tab onClick={() => navigate("/dashboard")} label="Accueil" value={0} defaultChecked disabled={!username}/>
                 <Tab onClick={() => navigate("/investments")} label="Portefeuille" value={1} disabled={!username} />
                 <Tab onClick={() => navigate("/calculator")} label="Calcul intèrêts composés" value={2} disabled={!username}/>
               </Tabs>

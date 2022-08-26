@@ -14,7 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../utils/UserContext";
 
 
-const items = [{text :"Dashboard", clic:"/dashboard"},{text :"Portefeuille", clic:"/investments"},{text :"Calcul intèrêts", clic:"/calculator"}];
+const items = [{text :"Accueil", clic:"/dashboard"},{text :"Portefeuille", clic:"/investments"},{text :"Calcul intèrêts", clic:"/calculator"}];
 const DrawerComp = () => {
 const [openDrawer, setOpenDrawer] = useState(false);
 const username = localStorage.getItem('username');
@@ -49,6 +49,7 @@ const titlechange = () => {
       <Drawer
         anchor="right"
         open={openDrawer}
+        onClose = {() => setOpenDrawer(!openDrawer)}
       >
         <List         
         sx={{
