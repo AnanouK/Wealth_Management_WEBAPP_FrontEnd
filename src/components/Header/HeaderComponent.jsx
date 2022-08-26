@@ -52,7 +52,7 @@ const HeaderComponent = () => {
           {isMatch ? (
             <>
               <Typography sx={{ fontSize: "1.2rem", paddingLeft: "10%" }}>
-                Gestionnaire de patrimoine
+                Gestion de patrimoine
               </Typography>
               <DrawerComp />
             </>
