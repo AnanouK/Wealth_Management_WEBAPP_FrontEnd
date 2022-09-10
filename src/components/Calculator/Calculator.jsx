@@ -122,7 +122,7 @@ export const Calculator = () => {
         </div>
       </form>
       {
-         (monthlyWant !== 0 && data.length !== 0 && data[data.length - 2].Years !==null ) ? (
+         (monthlyWant !== 0 && data.length !== 0 && data[data.length - 2].Years) ? (
           <div className="goal" hidden={false}> Vous atteindrez votre objectif mensuel dans : {data[data.length - 2].Years} Année(s) et {parseInt(data[data.length - 1].Months) + 1} Mois</div>) : (null)
         
       }
