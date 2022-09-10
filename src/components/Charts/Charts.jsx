@@ -84,8 +84,13 @@ export const Charts = () => {
       })}
 
       const arrow = (e) => {
+
+        if( e == "deposit")
+        {
+          return <p>Dépôt</p>
+        } 
         
-        if ( e > 0 && e !== 100.000)
+        else if ( e > 0 && e !== 100.000)
         {
             return  <span className='up'>
                     <ArrowDropUp className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
@@ -111,7 +116,7 @@ export const Charts = () => {
           <h2 className='title'> Evolution du capital de l'investissement : {name}</h2>
         <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
         <AreaChart
-          data={data.filter(entry => entry.Pourcentage !== 0 || entry == data[0])}
+          data={data.filter(entry => entry.Pourcentage == "deposit" || entry.Pourcentage !== 0 || entry === data[0])}
           margin={{
             top: 15,
             right: 12,
@@ -138,7 +143,7 @@ export const Charts = () => {
             <tbody className="test2">
                 {
                     reversedata.map(
-                      line => line.Pourcentage !== 0 || line == data[0] ? (
+                      line =>  line.Pourcentage == "deposit" ||  line.Pourcentage !== 0 || line === data[0] ? (
                         <tr className="charts" key={line.Date}>
                             <td className="cellulecharts"> {line.Date}</td>
                             <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>

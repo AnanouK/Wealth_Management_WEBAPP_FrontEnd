@@ -152,7 +152,7 @@ const ListInvestmentComponent = () => {
               <tr className="test3">
                 <th className="itemsName"> Nom</th>
                 <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Date dernière modification</th>
-                <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Capital de départ</th>
+                <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Capital Déposé</th>
                 <th className="items"> Capital Actuel</th>
                 <th className="items"> Bénéfice</th>
                 <th className="items1"> Actions</th>
