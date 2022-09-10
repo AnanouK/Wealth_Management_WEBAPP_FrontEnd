@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
-
+import {XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area } from 'recharts';
 
 const INGRESS_API = "34.160.0.103";
 const CALCULATOR_GETDATA = "http://" + INGRESS_API + "/calculator/";
@@ -19,6 +20,13 @@ export const Calculator = () => {
   const [data, setdata] = useState([])
   const [monthlyWant, setmonthlyWant] = useState(0)
   const [hide, sethide] = useState(true)
+  const [windowSize, setWindowSize] = useState(getWindowSize());
+
+  
+  function getWindowSize() {
+    const {innerWidth, innerHeight} = window;
+    return {innerWidth, innerHeight};
+  }
 
 
   const Calculate = (e) => {
@@ -38,6 +46,16 @@ export const Calculator = () => {
         setdata(res.data); 
       })
     }
+
+        function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
   }
   
 
@@ -112,6 +130,32 @@ export const Calculator = () => {
          (monthlyWant !== 0 && data.length !== 0 && data[data.length - 2].Years == null ) ? (
           <div className="goal" hidden={false}> Votre objectif mensuel n'est pas atteint dans cette simulation</div>) : (null)
         
+      }
+
+      { (!hide)? 
+      (
+      <div className="calculatorchart">
+        <h2 className='title'> Evolution du capital: </h2>
+        <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
+        <AreaChart
+          data={data}
+          margin={{
+            top: 15,
+            right: 12,
+            bottom: 5,
+            left: 20,
+          }}
+        >
+          <CartesianGrid  horizontal="true" vertical="" stroke="#243240" strokeDasharray="3 3"/>
+          <XAxis dataKey="Mois" tick={{fill:"#fff"}} name="Date" allowDuplicatedCategory="false" hide={windowSize.innerWidth<= 1000 ? (true) : (false)} />
+          <YAxis tick={{fill:"#fff"}} unit={"€"} name="Capital" padding={{bottom: 10}} domain={['dataMin', 'dataMax']} />
+          <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false}/>
+          <Area type="monotone" dataKey="Total" fill='#8884d8' stroke="#8884d8" strokeWidth="5" dot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 2,r:5}} activeDot={{fill:"#2e4355",stroke:"#8884d8",strokeWidth: 5,r:10}} />
+          
+        </AreaChart>
+      </ResponsiveContainer>
+      </div>
+      ) : (null)
       }
       
       <div className='listecalculator' >
