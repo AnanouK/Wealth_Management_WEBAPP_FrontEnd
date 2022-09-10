@@ -64,18 +64,21 @@ export const Donut = () => {
 
                 options={{
                     noData:{text:"Pas de données"},                        
-                    labels: name,  
-                    legend: {position: "right"},
+                    labels: name, 
+                    legend: {position: "right",labels: {useSeriesColors: "true", }},
                     responsive: [{
                       breakpoint: 1200,
                       options: {
                         chart: {
                           width: 350,
-                          height: 350,
+                          height: 500,
                         },
                         legend: {
                           position: 'bottom',
-                          show: false,
+                          show: true,
+                          labels: {
+                            useSeriesColors: "true", 
+                          }
                         }
                       }
                     }]          
@@ -94,7 +97,7 @@ export const Donut = () => {
                   options={{
                         noData:{text:"Pas de données"},                        
                         labels: name,  
-                        legend: {position: "right"},
+                        legend: {position: "right",labels: {useSeriesColors: "true", }},
                         responsive: [{
                           breakpoint: 1200,
                           options: {
