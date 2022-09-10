@@ -131,7 +131,7 @@ export const AddInvestmentComponent = () => {
                                 <input type="date" placeholder="07/08/2021" name="start" className="form-control" value={startdate} onChange = {(e) => setstartdate(e.target.value)} />
                             </div>
                             <div className="form-group mb-2">
-                                <label className="form-label"> Capital de départ : </label>
+                                <label className="form-label"> Capital déposé : </label>
                                 <input type="number" placeholder="1000" name="capital" className="form-control" value={capital} onChange = {(e) => setcapital(e.target.value)} />
                             </div>
                             <div className="form-group mb-2">
