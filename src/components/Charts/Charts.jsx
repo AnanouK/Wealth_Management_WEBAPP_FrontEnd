@@ -87,7 +87,7 @@ export const Charts = () => {
 
         if( e == "deposit")
         {
-          return <p>Dépôt</p>
+          return <span className='deposit'>Dépôt</span>
         } 
         
         else if ( e > 0 && e !== 100.000)
