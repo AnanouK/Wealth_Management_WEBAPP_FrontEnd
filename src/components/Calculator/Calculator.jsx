@@ -143,7 +143,7 @@ export const Calculator = () => {
             top: 15,
             right: 12,
             bottom: 5,
-            left: 20,
+            left: 50,
           }}
         >
           <CartesianGrid  horizontal="true" vertical="" stroke="#243240" strokeDasharray="3 3"/>
