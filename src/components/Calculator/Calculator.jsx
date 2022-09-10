@@ -7,6 +7,11 @@ import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import {XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { AreaChart, Area } from 'recharts';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 
 const INGRESS_API = "34.160.0.103";
 const CALCULATOR_GETDATA = "http://" + INGRESS_API + "/calculator/";
@@ -21,6 +26,7 @@ export const Calculator = () => {
   const [monthlyWant, setmonthlyWant] = useState(0)
   const [hide, sethide] = useState(true)
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [pourcentageSelect, setPourcentageSelect]= useState("")
 
   
   function getWindowSize() {
@@ -41,6 +47,7 @@ export const Calculator = () => {
           pourcentage: pourcentage,
           monthly: monthly,
           goal: monthlyWant,
+          pourcentageSelect: pourcentageSelect,
         },
       }).then(res => {
         setdata(res.data); 
@@ -87,8 +94,9 @@ export const Calculator = () => {
               value={initial} onChange = {(e) => setinitial(e.target.value)}
             />
           </div>
+
           <div className="form-group mt-3">
-            <label>Rendement (% Annuel)</label>
+            <label>Rendement (%)</label>
             <input
               type="number"
               className="form-control mt-1"
@@ -96,6 +104,21 @@ export const Calculator = () => {
               value={pourcentage} onChange = {(e) => setpourcentage(e.target.value)}
             />
           </div>
+          <br/>
+          <FormControl fullWidth variant="standard" size="small">
+            <InputLabel id="demo-simple-select-label">Annuel ou Mensuel ?</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              defaultValue={"Annuel"}
+              label="Age"
+              value={pourcentageSelect}
+              onChange={(e) => setPourcentageSelect(e.target.value)}
+            >
+              <MenuItem value={"Annuel"}>Annuel</MenuItem>
+              <MenuItem value={"Mensuel"}>Mensuel</MenuItem>
+            </Select>
+          </FormControl>
           <div className="form-group mt-3">
             <label>Ajout mensuel</label>
             <input
