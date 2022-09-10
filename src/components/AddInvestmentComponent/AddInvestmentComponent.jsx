@@ -153,10 +153,15 @@ export const AddInvestmentComponent = () => {
                     </div>
                 </div>
             </div>
-
-        </div>
+        </div>  
     </div>
-    <div className="fill"></div>
+    <div className="informationsdiv">
+    <h3 className="informations"> Informations</h3>
+    <span className="deposittext"> 1. Pour mentionner un nouveau dépôt sur cet investissement veuillez additionnez en plus du montant déjà inscrit le montant du nouveau dépôt dans "Capital déposé" puis dans "Capital Actuel".</span>
+    <span className="deposittext"> 2. Le remplissage est pour le moment manuel, par la suite via des clés API certaines données pourront être récupérées automatiquement.</span>
+    <span className="deposittext"> 3. Veillez à mettre la bonne date pour la modification ou la création de votre investissement.</span>
+    </div>
+
     </div>
   )
 }
