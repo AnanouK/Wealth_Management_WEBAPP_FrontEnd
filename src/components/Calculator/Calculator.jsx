@@ -81,6 +81,7 @@ export const Calculator = () => {
               size="small"
               valueLabelDisplay="auto"
               value={time}
+              max={25}
               onChange = {(e) => settime(e.target.value)}
             />
           </div>
