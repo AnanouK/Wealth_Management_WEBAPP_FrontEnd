@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
 import { AreaChart, Area } from 'recharts';
+import InvestmentService from "../../services/InvestmentService"
 
 
 
@@ -20,7 +21,9 @@ export const Charts = () => {
   const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof";
   const CHECKFOREMPTY = "http://" + INGRESS_API + "/statistics/checkempty";
   const DELETEONE = "http://" + INGRESS_API + "/statistics/delete/onestat";
+  const GETMONTHLY = "http://" + INGRESS_API + "/statistics/getMonthlyPourcentage";
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  let monthlyPourcentage;
 
   
   function getWindowSize() {
@@ -81,7 +84,26 @@ export const Charts = () => {
           draggable: true,
           progress: undefined,
           }); 
-      })}
+      })
+      if(Id == reversedata[0].Id)
+      {
+        //If the last recent row was deleted, need to update the wallet 
+      }
+    
+    }
+
+
+    const monthlypourcentage = () => {
+      axios.get(GETMONTHLY, {
+        params: {
+          name: name,
+          username: username,
+        },
+      }).then(response => {
+        monthlyPourcentage = response.data;
+      });
+      
+    }
 
       const arrow = (e) => {
 
@@ -113,7 +135,7 @@ export const Charts = () => {
 
     return (
         <div className='newcontainer'>
-          <h2 className='title'> Evolution du capital de l'investissement : {name}</h2>
+          <h2 className='title'> Evolution du capital de : {name}</h2>
         <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
         <AreaChart
           data={data.filter(entry => entry.Pourcentage == "deposit" || entry.Pourcentage !== 0 || entry === data[0])}
@@ -132,6 +154,10 @@ export const Charts = () => {
           
         </AreaChart>
       </ResponsiveContainer>
+
+      <div className='pourcentage'>
+        <p className='monthlyPourcentage'>Pourcentage sur le mois en cours : {monthlypourcentage()} % {arrow(monthlyPourcentage)}</p>
+      </div>
 
       <table className='table table-bordered'>
             <thead>
