@@ -96,8 +96,8 @@ export const Charts = () => {
     const monthlypourcentage = () => {
       axios.get(GETMONTHLY, {
         params: {
-          name: name,
           username: username,
+          name: name,
         },
       }).then(response => {
         monthlyPourcentage = response.data;
