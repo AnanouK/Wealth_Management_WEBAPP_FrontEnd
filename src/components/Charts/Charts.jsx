@@ -155,7 +155,7 @@ export const Charts = () => {
         </AreaChart>
       </ResponsiveContainer>
 
-      <div className='pourcentage' hidden="true">
+      <div className='pourcentage' hidden="false">
         <p className='monthlyPourcentage'>Pourcentage sur le mois en cours : {monthlypourcentage()} % {arrow(monthlyPourcentage)}</p>
       </div>
 
