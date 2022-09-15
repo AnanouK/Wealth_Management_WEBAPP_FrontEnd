@@ -3,6 +3,7 @@ import { useState, useEffect} from "react"
 import React from "react";
 import  Chart  from "react-apexcharts";
 import "./Donut.css"
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export const Donut = () => {
 
@@ -59,13 +60,12 @@ export const Donut = () => {
                 <Chart 
                 type="donut"
                 width={550}
-                height={550}
+                height={450}
                 series={capital}   
-
                 options={{
                     noData:{text:"Pas de données"},                        
                     labels: name, 
-                    legend: {position: "right",labels: {useSeriesColors: "true", }},
+                    legend: {position: "bottom",labels: {useSeriesColors: "true", }},
                     responsive: [{
                       breakpoint: 1200,
                       options: {
@@ -85,36 +85,25 @@ export const Donut = () => {
                   }}
                 >
                 </Chart>
-                
-                {windowSize.innerWidth >= 1000 ? (
-                  <Chart
-                  
-                  type="pie"
-                  width={550}
-                  height={550}
-                  series={capital}   
-                      
-                  options={{
-                        noData:{text:"Pas de données"},                        
-                        labels: name,  
-                        legend: {position: "right",labels: {useSeriesColors: "true", }},
-                        responsive: [{
-                          breakpoint: 1200,
-                          options: {
-                            chart: {
-                              width: 350,
-                              height: 350,
-                            },
-                            legend: {
-                              position: 'bottom',
-                              show: false,
-                            }
-                          }
-                        }]          
-                      }}
-                  >
-                  </Chart>
-              ) : (null)}
+              
+                <ResponsiveContainer aspect={windowSize.innerWidth<= 1000 ? (1) : (2)}>
+                <BarChart
+                  data={alldata}
+                  margin={{
+                    top: 20,
+                    right: 10,
+                    left: 20,
+                    bottom: -25,
+                  }}
+                >
+                  <CartesianGrid horizontal="true" vertical="" stroke="#243240" strokeDasharray="3 3" />
+                  <XAxis dataKey="name" tick={{fill:"#fff"}} allowDuplicatedCategory="false" fontSize={windowSize.innerWidth<= 1000 ? (0) : (15)} fil  />
+                  <YAxis tick={{fill:"#fff"}} unit={"€"} name="Capital"  />
+                  <Tooltip contentStyle={{ backgroundColor: "black", color: "white" }} itemStyle={{ color: "#fff" }} cursor={false}  />
+                  <Legend legendType="none"/>
+                  <Bar dataKey="actual" fill="#45d99e" unit={"€"} name={"Capital"}  />
+                </BarChart>
+              </ResponsiveContainer>
 
         </div>
         </div>

@@ -132,7 +132,7 @@ export const ChartsGlobal = () => {
             <thead>
               <tr>
                 <th className="itemscharts">Date</th>
-                <th className="itemscharts">Capital</th>
+                <th className="itemscharts">Patrimoine</th>
                 <th className='itemschartsactions'>Action</th>
               </tr>
  

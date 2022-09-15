@@ -19,11 +19,11 @@ const CALCULATOR_GETDATA = "http://" + INGRESS_API + "/calculator/";
 export const Calculator = () => {
 
   const [time, settime] = useState(1)
-  const [initial, setinitial] = useState(0)
-  const [pourcentage, setpourcentage] = useState(0)
-  const [monthly, setmonthly] = useState(0)
+  const [initial, setinitial] = useState()
+  const [pourcentage, setpourcentage] = useState()
+  const [monthly, setmonthly] = useState()
   const [data, setdata] = useState([])
-  const [monthlyWant, setmonthlyWant] = useState(0)
+  const [monthlyWant, setmonthlyWant] = useState()
   const [hide, sethide] = useState(true)
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [pourcentageSelect, setPourcentageSelect]= useState("")
@@ -99,6 +99,7 @@ export const Calculator = () => {
           <div className="form-group mt-3">
             <label>Rendement (%)</label>
             <input
+              required
               type="number"
               className="form-control mt-1"
               placeholder="Pourcentage de rendement"
@@ -111,6 +112,7 @@ export const Calculator = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
+              required
               defaultValue={"Annuel"}
               label="Age"
               value={pourcentageSelect}

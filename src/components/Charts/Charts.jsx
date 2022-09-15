@@ -136,7 +136,7 @@ export const Charts = () => {
     return (
         <div className='newcontainer'>
           <h2 className='title'> Evolution du capital de : {name}</h2>
-        <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (3)}>
+        <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (4)}>
         <AreaChart
           data={data.filter(entry => entry.Pourcentage == "deposit" || entry.Pourcentage !== 0 || entry === data[0])}
           margin={{
