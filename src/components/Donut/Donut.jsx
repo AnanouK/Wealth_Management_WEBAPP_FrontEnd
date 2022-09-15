@@ -101,7 +101,7 @@ export const Donut = () => {
                   <YAxis tick={{fill:"#fff"}} unit={"€"} name="Capital"  />
                   <Tooltip contentStyle={{ backgroundColor: "black", color: "white" }} itemStyle={{ color: "#fff" }} cursor={false}  />
                   <Legend legendType="none"/>
-                  <Bar dataKey="actual" fill="#45d99e" unit={"€"} name={"Capital"}  />
+                  <Bar dataKey="actual" fill="#26632d" unit={"€"} name={"Capital"}  />
                 </BarChart>
               </ResponsiveContainer>
 
