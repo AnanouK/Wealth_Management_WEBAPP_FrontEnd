@@ -23,7 +23,7 @@ export const Charts = () => {
   const DELETEONE = "http://" + INGRESS_API + "/statistics/delete/onestat";
   const GETMONTHLY = "http://" + INGRESS_API + "/statistics/getMonthlyPourcentage";
   const [windowSize, setWindowSize] = useState(getWindowSize());
-  let monthlyPourcentage;
+  const [monthlyRate, setMonthlyRate] = useState(0);
 
   
   function getWindowSize() {
@@ -35,6 +35,7 @@ export const Charts = () => {
 
   useEffect(() => {
     getData();
+    monthlyPourcentage();
     window.scrollTo(0, 0);
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -93,16 +94,15 @@ export const Charts = () => {
     }
 
 
-    const monthlypourcentage = () => {
+    const monthlyPourcentage = () => {
       axios.get(GETMONTHLY, {
         params: {
           username: username,
           name: name,
         },
       }).then(response => {
-        monthlyPourcentage = response.data;
+        setMonthlyRate(response.data);
       });
-      
     }
 
       const arrow = (e) => {
@@ -155,8 +155,8 @@ export const Charts = () => {
         </AreaChart>
       </ResponsiveContainer>
 
-      <div className='pourcentage' hidden="false">
-        <p className='monthlyPourcentage'>Pourcentage sur le mois en cours : {monthlypourcentage()} % {arrow(monthlyPourcentage)}</p>
+      <div className='pourcentage'>
+        <p className='monthlyPourcentage'>Pourcentage sur le mois en cours : {monthlyRate.toFixed(3)}%</p>
       </div>
 
       <table className='table table-bordered'>
