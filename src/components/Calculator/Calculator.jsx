@@ -123,11 +123,12 @@ export const Calculator = () => {
             </Select>
           </FormControl>
           <div className="form-group mt-3">
-            <label>Ajout mensuel</label>
+            <label>Ajout mensuel ? (Aucun = 0)</label>
             <input
               type="number"
               className="form-control mt-1"
               placeholder="Montant de la somme investie chaque mois"
+              required
               value={monthly} onChange = {(e) => setmonthly(e.target.value)}
             />
             </div>
