@@ -138,6 +138,7 @@ export const Calculator = () => {
               type="number"
               className="form-control mt-1"
               placeholder="Gain mensuel souhaité"
+              required
               value={monthlyWant} onChange = {(e) => setmonthlyWant(e.target.value)}
             />
             </div>
