@@ -171,7 +171,7 @@ export const Charts = () => {
 
       <div className='percentage'>
           <p className='monthlyPercentageAndEarn'>Pourcentage sur le mois en cours : {monthlyRate.toFixed(3)}%</p>
-          <p className='monthlyEarn'>Bénéfice sur le mois en cours : {getMonthlyEarn.toFixed(0)}€</p>
+          <p className='monthlyEarn'>Bénéfice sur le mois en cours : {parseInt(getMonthlyEarn)}€</p>
       </div>
 
       <table className='table table-bordered'>
