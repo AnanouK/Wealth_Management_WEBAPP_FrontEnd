@@ -152,7 +152,7 @@ export const Charts = () => {
           <h2 className='title'> Evolution du capital de : {name}</h2>
         <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (4)}>
         <AreaChart
-          data={data.filter(entry => entry.Percentage === "deposit" || entry.Percentage !== 0 || entry === data[0])}
+          data={data.filter(entry => entry.Pourcentage === "deposit" || entry.Pourcentage !== 0 || entry === data[0])}
           margin={{
             top: 15,
             right: 12,
@@ -184,10 +184,10 @@ export const Charts = () => {
             <tbody className="test2">
                 {
                     reversedata.map(
-                      line =>  line.Percentage === "deposit" ||  line.Percentage !== 0 || line === data[0] ? (
+                      line =>  line.Pourcentage === "deposit" ||  line.Pourcentage !== 0 || line === data[0] ? (
                         <tr className="charts" key={line.Date}>
                             <td className="cellulecharts"> {line.Date}</td>
-                            <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Percentage)}</td>
+                            <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>
                             <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
                         </tr>)
                         : null
