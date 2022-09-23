@@ -10,11 +10,9 @@
   font-size: 15px;
 }
 
-.pourcentage{
-  padding-top: 30px;
-}
-
-.monthlyPourcentage{
+.percentage{
+  margin-top: 40px;
+  padding-top: 10px;
   background-color: #111827;
   color: white;
   border: 1px solid #8884d8;
@@ -26,9 +24,14 @@
   font-weight: bold;
 }
 
+.monthlyPercentage{
+
+}
+
 @media screen and (max-width:1000px) {
-  .monthlyPourcentage {
+  .percentage{
    margin: 0px;
+   margin-top: 30px;
    font-size: 15px;
   }
 

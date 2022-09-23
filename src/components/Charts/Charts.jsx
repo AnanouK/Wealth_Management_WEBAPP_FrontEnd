@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
 import { AreaChart, Area } from 'recharts';
-import InvestmentService from "../../services/InvestmentService"
 
 
 
@@ -21,9 +20,11 @@ export const Charts = () => {
   const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof";
   const CHECKFOREMPTY = "http://" + INGRESS_API + "/statistics/checkempty";
   const DELETEONE = "http://" + INGRESS_API + "/statistics/delete/onestat";
-  const GETMONTHLY = "http://" + INGRESS_API + "/statistics/getMonthlyPourcentage";
+  const GETMONTHLYPERCENTAGE = "http://" + INGRESS_API + "/statistics/getMonthlyPercentage";
+  const GETMONTHLYEARN = "http://" + INGRESS_API + "/statistics/getMonthlyEarn";
   const [windowSize, setWindowSize] = useState(getWindowSize());
   const [monthlyRate, setMonthlyRate] = useState(0);
+  const [getMonthlyEarn, setMonthlyEarn] = useState(0);
 
   
   function getWindowSize() {
@@ -35,7 +36,8 @@ export const Charts = () => {
 
   useEffect(() => {
     getData();
-    monthlyPourcentage();
+    monthlyPercentage();
+    monthlyEarn();
     window.scrollTo(0, 0);
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -48,7 +50,7 @@ export const Charts = () => {
     };
 
 
-  }, [])
+  })
 
   const getData = () =>{
     axios.get(CHECKFOREMPTY, {
@@ -86,7 +88,7 @@ export const Charts = () => {
           progress: undefined,
           }); 
       })
-      if(Id == reversedata[0].Id)
+      if(Id === reversedata[0].Id)
       {
         //If the last recent row was deleted, need to update the wallet 
       }
@@ -94,8 +96,8 @@ export const Charts = () => {
     }
 
 
-    const monthlyPourcentage = () => {
-      axios.get(GETMONTHLY, {
+    const monthlyPercentage = () => {
+      axios.get(GETMONTHLYPERCENTAGE, {
         params: {
           username: username,
           name: name,
@@ -105,9 +107,20 @@ export const Charts = () => {
       });
     }
 
+    const monthlyEarn = () => {
+      axios.get(GETMONTHLYEARN, {
+        params: {
+          name: name,
+          username: username,
+        },
+      }).then(response => {
+        setMonthlyEarn(response.data);
+      });
+    }
+
       const arrow = (e) => {
 
-        if( e == "deposit")
+        if( e === "deposit")
         {
           return <span className='deposit'>Dépôt</span>
         } 
@@ -116,7 +129,7 @@ export const Charts = () => {
         {
             return  <span className='up'>
                     <ArrowDropUp className="featuredIcon" fontSize={windowSize.innerWidth<= 1000 ? ("10px") : ("small")}/> 
-                    <span className='pourcentageGlobalChart'>{e.toFixed(3)}%</span>
+                    <span className='percentageGlobalChart'>{e.toFixed(3)}%</span>
                     </span>
         }   
         
@@ -138,7 +151,7 @@ export const Charts = () => {
           <h2 className='title'> Evolution du capital de : {name}</h2>
         <ResponsiveContainer width="100%" aspect={windowSize.innerWidth<= 1000 ? (1) : (4)}>
         <AreaChart
-          data={data.filter(entry => entry.Pourcentage == "deposit" || entry.Pourcentage !== 0 || entry === data[0])}
+          data={data.filter(entry => entry.Percentage === "deposit" || entry.Percentage !== 0 || entry === data[0])}
           margin={{
             top: 15,
             right: 12,
@@ -155,8 +168,9 @@ export const Charts = () => {
         </AreaChart>
       </ResponsiveContainer>
 
-      <div className='pourcentage'>
-        <p className='monthlyPourcentage'>Pourcentage sur le mois en cours : {monthlyRate.toFixed(3)}%</p>
+      <div className='percentage'>
+          <p className='monthlyPercentageAndEarn'>Pourcentage sur le mois en cours : {monthlyRate.toFixed(3)}%</p>
+          <p className='monthlyEarn'>Bénéfice sur le mois en cours : {getMonthlyEarn.toFixed(3)}€</p>
       </div>
 
       <table className='table table-bordered'>
@@ -169,10 +183,10 @@ export const Charts = () => {
             <tbody className="test2">
                 {
                     reversedata.map(
-                      line =>  line.Pourcentage == "deposit" ||  line.Pourcentage !== 0 || line === data[0] ? (
+                      line =>  line.Percentage === "deposit" ||  line.Percentage !== 0 || line === data[0] ? (
                         <tr className="charts" key={line.Date}>
                             <td className="cellulecharts"> {line.Date}</td>
-                            <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Pourcentage)}</td>
+                            <td className="cellulechartscapital"> {line.Capital.toLocaleString()} € {arrow(line.Percentage)}</td>
                             <td className="cellulechartsboutons"><button className='btn btn-danger' onClick={() => deleteone(line.Id)} style = {{marginLeft : "10px"}}> X</button></td>
                         </tr>)
                         : null
