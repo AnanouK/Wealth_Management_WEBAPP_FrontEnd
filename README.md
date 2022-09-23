@@ -22,7 +22,9 @@ Et plusieurs autres librairies pour l'amélioration visuelle des composants et l
 
 ## Capture d'écran de l'accueil 
 
-![1](https://user-images.githubusercontent.com/107629615/181916510-1f8bd5c5-24a3-42d7-b3a3-c4ee2059c58a.PNG)
+![1](https://user-images.githubusercontent.com/107629615/191553934-90efb873-f9de-4abc-9dc3-5f1e217909af.PNG)
+![2](https://user-images.githubusercontent.com/107629615/191553945-3cfbf1f6-1978-44b9-9851-0dea7730d679.PNG)
+
 
 ## Capture d'écran de la partie Portefeuille
 
@@ -31,12 +33,16 @@ Et plusieurs autres librairies pour l'amélioration visuelle des composants et l
 
 ## Capture d'écran de la partie statistique d'un passif/actif
 
-![1](https://user-images.githubusercontent.com/107629615/181916579-a3d4ec40-7c1f-4f53-abc8-c77e45a3f906.PNG)
+![3](https://user-images.githubusercontent.com/107629615/191554034-703f0cc1-53a8-4dde-a9ce-f30cbb7142c7.PNG)
+
 
 ## Capture d'écran de la partie "Calcul des intérêts composés" 
 
-![1](https://user-images.githubusercontent.com/107629615/185099266-90a9b438-f53f-4207-a55d-d0736340e109.PNG)
+![4](https://user-images.githubusercontent.com/107629615/191554303-2a4b68a5-909f-42ee-9e20-fe0c5c2ab165.PNG)
+![5](https://user-images.githubusercontent.com/107629615/191554306-90f697f8-5ddf-4324-9b42-e7cbbcbe23be.PNG)
 
+## L'application est entièrement responsive, voici la page d'accueil par exemple
 
+![9](https://user-images.githubusercontent.com/107629615/191554544-0eddf5df-d03d-4cce-b60b-40d91ddbe279.PNG)
 
 
