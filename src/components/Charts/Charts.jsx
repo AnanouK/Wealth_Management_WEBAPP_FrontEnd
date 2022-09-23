@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ArrowDropDown, ArrowDropUp} from "@mui/icons-material";
 import { AreaChart, Area } from 'recharts';
+import InvestmentService from "../../services/InvestmentService"
 
 
 
@@ -50,7 +51,7 @@ export const Charts = () => {
     };
 
 
-  })
+  }, [])
 
   const getData = () =>{
     axios.get(CHECKFOREMPTY, {
