@@ -34,10 +34,6 @@ text-align : center;
     font-size: 14px;
 }
 
-.cellule, .celluleboutons, .cellulebenefice{
-    border-top: 1px solid #8884d8;
-}
-
 @media screen and (max-width:1400px) {
     .head{
         font-size: 13px;
@@ -61,6 +57,9 @@ text-align : center;
         width: 100%;
     }
     span{
+        font-size: 10px;
+    }
+    .items{
         font-size: 10px;
     }
   }

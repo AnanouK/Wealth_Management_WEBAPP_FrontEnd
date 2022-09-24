@@ -171,9 +171,9 @@ const ListInvestmentComponent = () => {
                                 <span>{arrow1(investment)}</span>
                             </td>
                             <td className="celluleboutons" >
-                                <Link to={'/update/'+ investment.id}><Fab color="info" size='small' aria-label="edit" style={{fontSize: 10}}><EditIcon /></Fab></Link>
-                                <Link to={"/statistics/"+investment.name}><AnalyticsIcon  style={{ fontSize: 40 }} color='primary'/></Link>
-                                <button className='btn btn-danger' style = {{marginLeft : "5px", height: "40px", width:"35px"}} onClick={() => deleteinvest(investment.id, investment.name)}>X</button>
+                                <Link hidden={windowSize.innerWidth<= 1000 ? (true) : (false)} to={'/update/'+ investment.id}><Fab color="info" size='small' aria-label="edit" style={{fontSize: 10}}><EditIcon /></Fab></Link>
+                                <Link  to={"/statistics/"+investment.name}><AnalyticsIcon  style={{ fontSize: 40 }} color='primary'/></Link>
+                                <button hidden={windowSize.innerWidth<= 1000 ? (true) : (false)} className='btn btn-danger' style = {{marginLeft : "5px", height: "40px", width:"35px"}} onClick={() => deleteinvest(investment.id, investment.name)}>X</button>
                                 
 
                             </td>

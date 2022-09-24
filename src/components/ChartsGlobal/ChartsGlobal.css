@@ -24,4 +24,14 @@
     width: auto;
   }
 
+  @media screen and (max-width:1000px) {
+  .body{
+    font-size: 14px;
+  }
+
+  .itemscharts, .itemschartsactions{
+    font-size: 16px;
+  }
+  }
+
 
