@@ -42,16 +42,16 @@ text-align : center;
         font-size: 13px;
     }
     span{
-        font-size: 13px;
+        font-size: 10px;
     }
   }
 
   @media screen and (max-width:1000px) {
     .head{
-        font-size: 10px;
+        font-size: 14px;
     }
     .cellule ,.cellulebenefice{
-        font-size: 10px;
+        font-size: 14px;
     }
     .listcontainer{
         width: 100%;
@@ -60,7 +60,7 @@ text-align : center;
         font-size: 10px;
     }
     .items{
-        font-size: 10px;
+        font-size: 14px;
     }
   }
 
