@@ -174,14 +174,16 @@ export const Charts = () => {
           <p className='monthlyEarn'>Bénéfice sur le mois en cours : {parseInt(getMonthlyEarn)}€</p>
       </div>
 
-      <table className='table table-bordered'>
+      <table className='table'>
             <thead>
-                <th className="items">Date</th>
-                <th className="items">Capital</th>
-                <th className='items'>Action</th>
+                <tr>
+                  <th className="items">Date</th>
+                  <th className="items">Capital</th>
+                  <th className='items'>Action</th>
+                </tr>
  
             </thead>
-            <tbody className="test2">
+            <tbody className="body">
                 {
                     reversedata.map(
                       line =>  line.Pourcentage === "deposit" ||  line.Pourcentage !== 0 || line === data[0] ? (

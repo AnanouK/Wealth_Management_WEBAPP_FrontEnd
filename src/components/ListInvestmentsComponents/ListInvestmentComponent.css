@@ -1,32 +1,22 @@
-.listcontainer{
-margin-top : 0px;
-color : #111827;
-margin-bottom: 50px;
-padding-bottom: 100px;
-}
-
-.items, .itemsName {
-text-align : center;
-color : white;
-}
-.table{
-margin-top : 20px;
-font-size: 18px;
-font-weight: 600;
-}
-
-.test3{
+.head{
     font-size: 17px;
 }
-
-.title{
-text-align : center;
+.tableinvestments{
+    box-shadow: #8884d8 1px 1px 5px;
+    width: 100%;
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 
-.items1
-{
+.body{
+    background-color: #111827;
     color: white;
+    font-size: 18px;
+}
+.title{
+text-align : center;
 }
 
 .pourcentagebenef{
@@ -44,22 +34,12 @@ text-align : center;
     font-size: 14px;
 }
 
-.cellule{
-    margin-top: 100px;
+.cellule, .celluleboutons, .cellulebenefice{
+    border-top: 1px solid #8884d8;
 }
-
-.btn.btn-info{
-    background-color: white;
-    border: none;
-}
-.btn.btn-info:hover{
-    background-color: white;
-    border: none;
-}
-
 
 @media screen and (max-width:1400px) {
-    .test3{
+    .head{
         font-size: 13px;
     }
     .cellule ,.cellulebenefice{
@@ -68,14 +48,10 @@ text-align : center;
     span{
         font-size: 13px;
     }
-    .celluleboutons{
-        display: flex;
-    }
-
   }
 
   @media screen and (max-width:1000px) {
-    .test3{
+    .head{
         font-size: 10px;
     }
     .cellule ,.cellulebenefice{
@@ -87,6 +63,11 @@ text-align : center;
     span{
         font-size: 10px;
     }
+  }
 
+  @media screen and (max-width:440px) {
+  .celluleboutons{
+    display: flex;
+}
 
   }

@@ -1,15 +1,18 @@
 .container{
   margin-top: 50px;
 }
-
-.test2 {
-  background-color : white;
-  }
     
 .deposit {
   font-size: 15px;
 }
 
+.cellulecharts, .cellulechartscapital, .cellulechartsboutons{
+  border: none;
+}
+
+.items{
+  color: white;
+}
 .percentage{
   margin-top: 40px;
   padding-top: 10px;
@@ -22,10 +25,6 @@
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-}
-
-.monthlyPercentage{
-
 }
 
 @media screen and (max-width:1000px) {

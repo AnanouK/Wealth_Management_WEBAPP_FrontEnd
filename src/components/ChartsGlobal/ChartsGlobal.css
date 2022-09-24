@@ -3,15 +3,11 @@
     margin-bottom: 40px;
   }
   
-  .itemscharts {
+  .itemscharts, .itemschartsactions {
     text-align : center;
     color : white;
     }
 
-  .itemschartsactions{
-    text-align : center;
-    color : white;
-    }
   .table{
     margin-top : 20px;
     font-size: 18px;

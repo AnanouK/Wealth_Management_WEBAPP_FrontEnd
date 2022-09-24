@@ -128,7 +128,7 @@ export const ChartsGlobal = () => {
         </AreaChart>
       </ResponsiveContainer>
 
-      <table className='table table-bordered table-striped'>
+      <table className='table'>
             <thead>
               <tr>
                 <th className="itemscharts">Date</th>
@@ -137,7 +137,7 @@ export const ChartsGlobal = () => {
               </tr>
  
             </thead>
-            <tbody className="test2">
+            <tbody className="body">
                 {
                     reversedata.map(
                         line => line.Pourcentage !== 0? (

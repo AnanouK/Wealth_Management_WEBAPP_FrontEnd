@@ -22,16 +22,16 @@
   }
   
   .celluleearn{
-    color: green;
+    color: white;
     padding-top: 5px;
-    font-size: 13px;
+    font-size: 18px;
   }
 
   .celluleabove{
-    color: white;
+    color: green;
     background-color: green;
     padding-top: 5px;
-    font-size: 13px;
+    font-size: 18px;
   }
 
   .listecalculator{
@@ -40,9 +40,8 @@
     text-align: center;
   }
 
-  .tablecalculator{
-    width: 100%;
-    font-weight: bold;
+  .cellule, .celluleabove, .celluleearn{
+    border: none;
   }
 
   .goal{

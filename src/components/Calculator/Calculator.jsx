@@ -127,7 +127,7 @@ export const Calculator = () => {
             <input
               type="number"
               className="form-control mt-1"
-              placeholder="Montant de la somme investie chaque mois"
+              placeholder="Somme investie chaque mois"
               required
               value={monthly} onChange = {(e) => setmonthly(e.target.value)}
             />
@@ -187,9 +187,9 @@ export const Calculator = () => {
       }
       
       <div className='listecalculator' >
-      <table className='tablecalculator'>
+      <table className='table'>
           <thead>
-          <tr className="test3" hidden={hide}>
+          <tr hidden={hide}>
               <th className="items"> Mois</th>
               <th className="items"> Capital</th>
               <th className="items"> Total Investi</th>
@@ -199,11 +199,11 @@ export const Calculator = () => {
           </tr>
 
           </thead>
-          <tbody className="test2">
+          <tbody className="body">
               {
                   without2Last.map(
                       list => 
-                      <tr className="test1" key={list.Mois}>
+                      <tr className="charts" key={list.Mois}>
                           <td className="cellule"> {list.Mois}</td>
                           <td className="cellule"> {parseFloat(list.Total).toLocaleString()} €</td>
                           <td className="cellule"> {parseFloat(list.allInvest).toLocaleString()} €</td>

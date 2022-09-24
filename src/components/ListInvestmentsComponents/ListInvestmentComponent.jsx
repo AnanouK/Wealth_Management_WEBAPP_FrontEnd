@@ -147,18 +147,18 @@ const ListInvestmentComponent = () => {
   return (
     <div className='listcontainer'>
         <h2 className ="title"> Liste des Actifs/Passifs</h2>
-        <table className='table table-bordered'>
+        <table className='tableinvestments'>
             <thead>
-              <tr className="test3">
-                <th className="itemsName"> Nom</th>
+              <tr>
+                <th className="items"> Nom </th>
                 <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Date dernière modification</th>
                 <th className="items"  hidden={windowSize.innerWidth<= 1000 ? (true) : (false)}> Capital Déposé</th>
                 <th className="items"> Capital Actuel</th>
                 <th className="items"> Bénéfice</th>
-                <th className="items1"> Actions</th>
+                <th className="items"> Actions</th>
               </tr>
             </thead>
-            <tbody className="test2">
+            <tbody className="body">
                 {
                     investments.map(
                         investment =>
@@ -171,7 +171,7 @@ const ListInvestmentComponent = () => {
                                 <span>{arrow1(investment)}</span>
                             </td>
                             <td className="celluleboutons" >
-                                <Link to={'/update/'+ investment.id}><Fab color="info" size='small' aria-label="edit"><EditIcon /></Fab></Link>
+                                <Link to={'/update/'+ investment.id}><Fab color="info" size='small' aria-label="edit" style={{fontSize: 10}}><EditIcon /></Fab></Link>
                                 <Link to={"/statistics/"+investment.name}><AnalyticsIcon  style={{ fontSize: 40 }} color='primary'/></Link>
                                 <button className='btn btn-danger' style = {{marginLeft : "5px", height: "40px", width:"35px"}} onClick={() => deleteinvest(investment.id, investment.name)}>X</button>
                                 
