@@ -51,7 +51,7 @@ text-align : center;
         font-size: 14px;
     }
     .cellule ,.cellulebenefice{
-        font-size: 14px;
+        font-size: 12px;
     }
     .listcontainer{
         width: 100%;
@@ -60,7 +60,7 @@ text-align : center;
         font-size: 10px;
     }
     .items{
-        font-size: 14px;
+        font-size: 12px;
     }
   }
 
