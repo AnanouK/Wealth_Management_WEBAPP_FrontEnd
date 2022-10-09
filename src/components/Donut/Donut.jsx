@@ -10,7 +10,7 @@ export const Donut = () => {
     const username = localStorage.getItem('username');
     const [alldata, setalldata] = useState([]);
 
-    const INGRESS_API = "34.160.0.103";
+    const INGRESS_API = "35.227.200.91";
     const STATISTICSDATA = "http://" + INGRESS_API + "/investments/allinvestments";
     const [windowSize, setWindowSize] = useState(getWindowSize());
 

@@ -9,7 +9,7 @@ const FeaturedInfo = () => {
     const navigate = useNavigate();
     const username = localStorage.getItem('username');
 
-    const INVESTMENT_ALL = "http://34.160.0.103/investments/alldata";
+    const INVESTMENT_ALL = "http://35.227.200.91/investments/alldata";
 
     const [alldata, setalldata] = useState([0])
 

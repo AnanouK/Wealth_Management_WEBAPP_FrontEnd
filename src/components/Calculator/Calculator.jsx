@@ -13,7 +13,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
-const INGRESS_API = "34.160.0.103";
+const INGRESS_API = "35.227.200.91";
 const CALCULATOR_GETDATA = "http://" + INGRESS_API + "/calculator/";
 
 export const Calculator = () => {

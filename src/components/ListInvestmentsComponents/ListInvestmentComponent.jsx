@@ -44,7 +44,7 @@ const ListInvestmentComponent = () => {
     }
     }, [])
     
-    const INGRESS_API = "34.160.0.103";
+    const INGRESS_API = "35.227.200.91";
     const INVESTMENT_BASE_API_URL = "http://" + INGRESS_API + "/investments/allinvestments";
     const INVESTMENT_GETACTUAL = "http://" + INGRESS_API + "/investments/allactual";
 
@@ -84,12 +84,12 @@ const ListInvestmentComponent = () => {
     const deleteinvest = (id,name) => {
 
         if(window.confirm("Etes-vous sur de vouloir supprimer cet investissement ?")){
-            axios.delete("http://34.160.0.103/investments/delete", {
+            axios.delete("http://35.227.200.91/investments/delete", {
                 params: {
                   id: id,
                 },
               });
-            axios.delete("http://34.160.0.103/statistics/delete", {
+            axios.delete("http://35.227.200.91/statistics/delete", {
                 params: {
                   name: name,
                   username: username
@@ -121,12 +121,12 @@ const ListInvestmentComponent = () => {
     }
 
     const deleteAll= () => {
-      axios.delete("http://34.160.0.103/statistics/delete/all", {
+      axios.delete("http://35.227.200.91/statistics/delete/all", {
         params: {
           username: username
         },
       });
-      axios.delete("http://34.160.0.103/investments/delete/all", {
+      axios.delete("http://35.227.200.91/investments/delete/all", {
         params: {
           username: username
         },

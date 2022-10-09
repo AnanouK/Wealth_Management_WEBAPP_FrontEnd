@@ -17,7 +17,7 @@ export const ChartsGlobal = () => {
   const [data, setdata] = useState([]);
 
   const username = localStorage.getItem('username');
-  const INGRESS_API = "34.160.0.103";
+  const INGRESS_API = "35.227.200.91";
   const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof";
   const CHECKFOREMPTY = "http://" + INGRESS_API + "/statistics/checkempty";
   const DELETEONE = "http://" + INGRESS_API + "/statistics/delete/onestat";

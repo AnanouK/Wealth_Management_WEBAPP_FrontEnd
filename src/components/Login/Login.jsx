@@ -12,7 +12,7 @@ export const Login = () => {
   const [password, setpassword] = useState("demo1")
 
   const navigate = useNavigate();
-  const INGRESS_API = "34.160.0.103";
+  const INGRESS_API = "35.227.200.91";
   const LOGIN_BASE_API_URL = "http://" + INGRESS_API + "/users/";
 
   if(localStorage.getItem('username') !== null)

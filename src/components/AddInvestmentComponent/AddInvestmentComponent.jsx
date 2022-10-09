@@ -69,7 +69,7 @@ export const AddInvestmentComponent = () => {
 
     const getsingleinvest = (id) => {
 
-        axios.get("http://34.160.0.103/investments/", {
+        axios.get("http://35.227.200.91/investments/", {
             params: {
               id: id,
             },

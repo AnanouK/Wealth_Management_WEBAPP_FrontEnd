@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const INGRESS_API = "34.160.0.103";
+const INGRESS_API = "35.227.200.91";
 
 const STATISTICSDATA = "http://" + INGRESS_API + "/statistics/getstatisticsof/";
 

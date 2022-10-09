@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const INGRESS_API = "34.160.0.103";
+const INGRESS_API = "35.227.200.91";
 const INVESTMENT_BASE_API_URL = "http://" + INGRESS_API + "/investments/allinvestments";
 const INVESTMENT_ADD_INVESTMENT_SERVICE = "http://" + INGRESS_API + "/investments/addinvestment";
 const INVESTMENT_ADD_STATISTICS_SERVICE = "http://" + INGRESS_API + "/statistics/addstatistic";

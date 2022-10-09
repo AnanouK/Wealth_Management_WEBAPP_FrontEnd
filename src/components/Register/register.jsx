@@ -13,7 +13,7 @@ export const Register = () => {
   const [email, setemail] = useState("")
 
   const navigate = useNavigate();
-  const INGRESS_API = "34.160.0.103";
+  const INGRESS_API = "35.227.200.91";
   const USER_BASE_API_URL = "http://" + INGRESS_API + "/users/";
 
   const register = (e) => {
