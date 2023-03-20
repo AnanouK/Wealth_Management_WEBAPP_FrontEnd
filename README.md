@@ -1,6 +1,6 @@
 ## Front End de l'application web de gestion de patrimoine en Java
 
-LIEN DE LA DEMO : http://34.149.168.96/ (Identifiant et mot de passe déjà présents)
+LIEN DE LA DEMO : http://34.149.167.188/ (Identifiant et mot de passe déjà présents)
 
 - Création d'une one page application responsive en ReactJS.
 - Les données sont récupérées via des appels d'API vers le backend Java.
